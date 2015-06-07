@@ -9,16 +9,10 @@ public class numpadButtonController : MonoBehaviour
 
     private numpadController numpad;
     
-	
 	void Start () 
     {
         numpad = gameObject.transform.parent.transform.parent.GetComponent<numpadController>();
         if (type == numpadController.buttonType.BUTTON_NUMBER && buttonValue == 0) Debug.LogError("Numpad Button: " + gameObject.name + " - Bad buttonValue");
-	}
-	
-	void Update () 
-    {
-	
 	}
 
     void OnMouseDown()
@@ -26,6 +20,7 @@ public class numpadButtonController : MonoBehaviour
         if(type == numpadController.buttonType.BUTTON_NUMBER)
         {
             Debug.Log("Numpad Button: Set value: " + buttonValue);
+            gameManager.moves++;
             numpad.selectedArea.setValue(buttonValue);
             numpad.hide();
         }
@@ -34,6 +29,7 @@ public class numpadButtonController : MonoBehaviour
             if(type == numpadController.buttonType.BUTTON_CLEAR)
             {
                 Debug.Log("Numpad Button: Clear value");
+                gameManager.moves++;
                 numpad.selectedArea.setValue(0);
                 numpad.hide();
             }
