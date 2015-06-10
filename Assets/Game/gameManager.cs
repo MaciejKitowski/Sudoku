@@ -35,9 +35,9 @@ public class gameManager : MonoBehaviour
         sudokuIncorrect = false;
 
         //Check squares
-        for (int x = 0; x < 3 && !sudokuIncorrect; ++x)
+        for (int y = 0; y < 3 && !sudokuIncorrect; ++y)
         {
-            for (int y = 0; y < 3 && !sudokuIncorrect; ++y)
+            for (int x = 0; x < 3 && !sudokuIncorrect; ++x)
             {
                 if (!arena.square[x, y].checkSquare() && !sudokuIncorrect)
                 {

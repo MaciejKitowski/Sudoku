@@ -9,9 +9,9 @@ public class arenaManager : MonoBehaviour
     {
         square = new squareController[3, 3];
 
-        for (int x = 0, i = 0; x < 3; ++x)
+        for (int y = 0, i = 0; y < 3; ++y)
         {
-            for (int y = 0; y < 3; ++y, ++i) square[x,y] = gameObject.transform.GetChild(i).gameObject.GetComponent<squareController>();
+            for (int x = 0; x < 3; ++x, ++i) square[x,y] = gameObject.transform.GetChild(i).gameObject.GetComponent<squareController>();
         }
 	}
 }
