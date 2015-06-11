@@ -16,6 +16,11 @@ public class squareController : MonoBehaviour
         }
 	}
 
+    public areaController getArea(int ID)
+    {
+        return gameObject.transform.GetChild(0).gameObject.transform.GetChild(ID).gameObject.GetComponent<areaController>();
+    }
+
     public bool checkSquare()
     {
         for (int y = 0; y < 3; ++y)

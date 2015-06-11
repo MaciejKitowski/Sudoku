@@ -39,31 +39,20 @@ public class arenaManager : MonoBehaviour
         return true;
     }
 
-
-
     private void loadArea()
     {
-        areaController[] bufor = new areaController[81];
+        areaController[] buffer = new areaController[81];
 
-        //Load all area to bufor
+        //Load all areas to buffer
         for (int y = 0, i = 0, line = 1; y < 3;)
         {
             for (int x = 0; x < 3; ++x)
             {
                 for (int w = 0; w < 3; ++w, ++i)
                 {
-                    if(line == 1 || line == 4 || line == 7)
-                    {
-                        bufor[i] = square[x, y].gameObject.transform.GetChild(0).gameObject.transform.GetChild(w).gameObject.GetComponent<areaController>();
-                    }
-                    else if(line == 2 || line == 5 || line == 8)
-                    {
-                        bufor[i] = square[x, y].gameObject.transform.GetChild(0).gameObject.transform.GetChild(w+3).gameObject.GetComponent<areaController>();
-                    }
-                    else if (line == 3 || line == 6 || line == 9)
-                    {
-                        bufor[i] = square[x, y].gameObject.transform.GetChild(0).gameObject.transform.GetChild(w + 6).gameObject.GetComponent<areaController>();
-                    }
+                    if(line == 1 || line == 4 || line == 7) buffer[i] = square[x, y].getArea(w);
+                    else if(line == 2 || line == 5 || line == 8) buffer[i] = square[x, y].getArea(w + 3);
+                    else if (line == 3 || line == 6 || line == 9) buffer[i] = square[x, y].getArea(w + 6);
                 }
 
                 if (x == 2)
@@ -74,14 +63,11 @@ public class arenaManager : MonoBehaviour
             }
         }
 
-        //Load area from bufor
+        //Load areas from buffer
         for (int y = 0, i = 0; y < 9; ++y)
         {
-            for (int x = 0; x < 9; ++x, ++i)
-            {
-                area[x, y] = bufor[i];
-                Debug.Log(area[x, y] + " : " + area[x, y].gameObject.transform.parent.gameObject.transform.parent.gameObject.name + " -- " + x + " : " + y);
-            }
+            for (int x = 0; x < 9; ++x, ++i) area[x, y] = buffer[i];
+            //Debug.Log(area[x, y] + " : " + area[x, y].gameObject.transform.parent.gameObject.transform.parent.gameObject.name + " -- " + x + " : " + y);
         }
     }
 }
