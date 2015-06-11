@@ -19,7 +19,6 @@ public class arenaManager : MonoBehaviour
         loadArea(); 
 	}
 
-
     public bool checkHorizontal()
     {
         for (int y = 0; y < 9; ++y)
@@ -35,6 +34,34 @@ public class arenaManager : MonoBehaviour
                     }
                 }
             }
+        }
+        return true;
+    }
+
+    public bool checkVertical()
+    {
+        for (int x = 0; x < 9; ++x)
+        {
+            for (int y = 0; y < 9; ++y)
+            {
+                for (int b = 0; b < 9; ++b)
+                {
+                    if (area[x, y].value == area[x, b].value && area[x, y] != area[x, b])
+                    {
+                        Debug.Log("gameManager: Sudoku is incorrect (Vertical) in line: " + (x + 1));
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public bool checkSquare()
+    {
+        for (int y = 0; y < 3; ++y)
+        {
+            for (int x = 0; x < 3; ++x) if (!square[x, y].checkSquare()) return false;
         }
         return true;
     }

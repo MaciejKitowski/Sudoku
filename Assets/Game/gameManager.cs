@@ -9,8 +9,6 @@ public class gameManager : MonoBehaviour
 
     public static float timer;
     public static int moves;
-
-    private static bool sudokuIncorrect;
     
 	void Awake()
     {
@@ -32,29 +30,13 @@ public class gameManager : MonoBehaviour
 
     public static void checkSudoku()
     {
-        sudokuIncorrect = false;
-
-        //Check horizontal
-        if (!arena.checkHorizontal() && !sudokuIncorrect) sudokuIncorrect = true;
+        if (!arena.checkHorizontal() || !arena.checkVertical() || !arena.checkSquare())
+        {
+            Debug.Log("--- Sudoku is incorrect ---");
+        }
         else
         {
-            //Check vertical
-        }
-
-        //Check squares
-        for (int y = 0; y < 3 && !sudokuIncorrect; ++y)
-        {
-            for (int x = 0; x < 3 && !sudokuIncorrect; ++x)
-            {
-                if (!arena.square[x, y].checkSquare() && !sudokuIncorrect)
-                {
-                    Debug.Log("gameManager: Sudoku is incorrect in square: " + arena.square[x, y].gameObject.name);
-                    sudokuIncorrect = true;
-                }
-            }
-        }
-
-        
-        
+            Debug.Log("--- SUDOKU IS CORRECT ---");
+        }         
     }
 }
