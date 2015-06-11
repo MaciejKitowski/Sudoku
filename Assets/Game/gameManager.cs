@@ -34,6 +34,13 @@ public class gameManager : MonoBehaviour
     {
         sudokuIncorrect = false;
 
+        //Check horizontal
+        if (!arena.checkHorizontal() && !sudokuIncorrect) sudokuIncorrect = true;
+        else
+        {
+            //Check vertical
+        }
+
         //Check squares
         for (int y = 0; y < 3 && !sudokuIncorrect; ++y)
         {
@@ -46,5 +53,8 @@ public class gameManager : MonoBehaviour
                 }
             }
         }
+
+        
+        
     }
 }
