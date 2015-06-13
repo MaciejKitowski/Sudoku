@@ -16,8 +16,17 @@ public class arenaManager : MonoBehaviour
             for (int x = 0; x < 3; ++x, ++i) square[x,y] = gameObject.transform.GetChild(i).gameObject.GetComponent<squareController>();
         }
 
-        loadArea(); 
+        loadArea();
+        setAreaValues();
 	}
+
+    public void setAreaValues()
+    {
+        for(int y = 0, i = 1; y < 9; ++y)
+        {
+            for (int x = 0; x < 5; ++x, ++i) area[x, y].setConstValue(i);
+        }
+    }
 
     public bool checkHorizontal()
     {

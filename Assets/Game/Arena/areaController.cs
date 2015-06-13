@@ -5,6 +5,7 @@ using System.Collections;
 public class areaController : MonoBehaviour 
 {
     public int value;
+    public bool canEdit = true;
 
     private Text valueText;
 	
@@ -16,15 +17,9 @@ public class areaController : MonoBehaviour
         value = 0;
 	}
 	
-	
-	void Update () 
-    {
-	
-	}
-
     void OnMouseDown()
     {
-        if(!gameManager.numpad.isDisplayed())
+        if(!gameManager.numpad.isDisplayed() && canEdit)
         {
             Debug.Log(gameObject.transform.parent.transform.parent.name + " - " + gameObject.name);
 
@@ -39,5 +34,13 @@ public class areaController : MonoBehaviour
 
         if (val == 0) valueText.text = " ";
         else valueText.text = val.ToString();
+    }
+
+    public void setConstValue(int val)
+    {
+        value = val;
+        canEdit = false;
+        gameObject.GetComponent<RawImage>().color = new Color32(221,221,221,255);
+        valueText.text = val.ToString();
     }
 }
