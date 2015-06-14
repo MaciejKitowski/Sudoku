@@ -14,7 +14,7 @@ public class MainController : MonoBehaviour
 
     void Update()
     {
-        if (!manager.exitPanel.active)
+        if (!manager.exitPanel.active && !manager.selectModePanel.active)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -42,6 +42,7 @@ public class MainController : MonoBehaviour
         if (!manager.exitPanel.active)
         {
             Debug.Log("Play game button");
+            manager.selectModePanel.setActive(true);
         }
     }
 
