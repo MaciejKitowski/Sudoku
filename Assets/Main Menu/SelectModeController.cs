@@ -4,11 +4,13 @@ using System.Collections;
 public class SelectModeController : MonoBehaviour 
 {
     public bool active;
-	
-	void Start () 
+
+    private MainMenuManager manager;
+
+    void Start()
     {
-	
-	}
+        manager = gameObject.transform.GetComponentInParent<MainMenuManager>();
+    }
 	
 	
 	void Update () 
@@ -34,16 +36,22 @@ public class SelectModeController : MonoBehaviour
     public void buttonPreEasy()
     {
         Debug.Log("Predefined Easy button");
+        manager.selectLevelPanel.setDifficult(SelectLevelController.difficult.DIFFICULT_EASY);
+        manager.selectLevelPanel.setActive(true);
     }
 
     public void buttonPreMedium()
     {
         Debug.Log("Predefined Medium button");
+        manager.selectLevelPanel.setDifficult(SelectLevelController.difficult.DIFFICULT_MEDIUM);
+        manager.selectLevelPanel.setActive(true);
     }
 
     public void buttonPreHard()
     {
         Debug.Log("Predefined Hard button");
+        manager.selectLevelPanel.setDifficult(SelectLevelController.difficult.DIFFICULT_HARD);
+        manager.selectLevelPanel.setActive(true);
     }
 
     //Buttons - Random
