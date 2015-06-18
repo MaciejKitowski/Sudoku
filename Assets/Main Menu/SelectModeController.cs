@@ -5,14 +5,6 @@ public class SelectModeController : MonoBehaviour
 {
     public bool active;
 
-    private MainMenuManager manager;
-
-    void Start()
-    {
-        manager = gameObject.transform.GetComponentInParent<MainMenuManager>();
-    }
-	
-	
 	void Update () 
     {
         if (Input.GetKeyDown(KeyCode.Escape)) setActive(false);
@@ -36,34 +28,40 @@ public class SelectModeController : MonoBehaviour
     public void buttonPreEasy()
     {
         Debug.Log("Predefined Easy button");
-        manager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_EASY);
+        setActive(false);
+        MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_EASY);
     }
 
     public void buttonPreMedium()
     {
         Debug.Log("Predefined Medium button");
-        manager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_MEDIUM);
+        setActive(false);
+        MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_MEDIUM);
     }
 
     public void buttonPreHard()
     {
         Debug.Log("Predefined Hard button");
-        manager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_HARD);
+        setActive(false);
+        MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_HARD);
     }
 
     //Buttons - Random
     public void buttonRandEasy()
     {
         Debug.Log("Random Easy button");
+        setActive(false);
     }
 
     public void buttonRandMedium()
     {
         Debug.Log("Random Medium button");
+        setActive(false);
     }
 
     public void buttonRandHard()
     {
         Debug.Log("Random Hard button");
+        setActive(false);
     }
 }

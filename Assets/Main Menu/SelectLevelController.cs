@@ -84,6 +84,28 @@ public class SelectLevelController : MonoBehaviour
     public void buttonSelect()
     {
         Debug.Log("Select button");
+
+        gameManager.arena.resetAreaValues();
+
+        switch(Difficult)
+        {
+            case difficult.DIFFICULT_EASY:
+                gameManager.arena.setAreaValues(LevelManager.easyLevels[activeLevel]);
+                break;
+
+            case difficult.DIFFICULT_MEDIUM:
+                //gameManager.arena.setAreaValues(LevelManager.mediumLevels[activeLevel]);
+                break;
+
+            case difficult.DIFFICULT_HARD:
+                //gameManager.arena.setAreaValues(LevelManager.hardLevels[activeLevel]);
+                break;
+        }
+
+        gameManager.resetTimer();
+        gameManager.arena.setActive(true);
+        MainMenuManager.mainMenu.setActive(false);
+        setActive(false);
     }
 
     public void buttonNextLevel()

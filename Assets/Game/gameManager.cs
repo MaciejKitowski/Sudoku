@@ -26,7 +26,15 @@ public class gameManager : MonoBehaviour
 	void Update () 
     {
         timer += Time.deltaTime;
+
+        if (arena.checkEmpty()) checkButton.activate();
+        else checkButton.deactivate();
 	}
+
+    public static void resetTimer()
+    {
+        timer = 0F;
+    }
 
     public static void checkSudoku()
     {

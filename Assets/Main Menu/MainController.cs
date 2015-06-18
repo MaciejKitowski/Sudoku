@@ -5,20 +5,13 @@ public class MainController : MonoBehaviour
 {
     public bool active;
     
-    private MainMenuManager manager;
-
-    void Start()
-    {
-        manager = gameObject.transform.GetComponentInParent<MainMenuManager>();
-    }
-
     void Update()
     {
-        if (!manager.exitPanel.active && !manager.selectModePanel.active)
+        if (!MainMenuManager.exitPanel.active && !MainMenuManager.selectModePanel.active)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                manager.exitPanel.setActive(true);
+                MainMenuManager.exitPanel.setActive(true);
             }
         }
     }
@@ -39,16 +32,16 @@ public class MainController : MonoBehaviour
 
     public void buttonPlay()
     {
-        if (!manager.exitPanel.active)
+        if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Play game button");
-            manager.selectModePanel.setActive(true);
+            MainMenuManager.selectModePanel.setActive(true);
         }
     }
 
     public void buttonResolve()
     {
-        if (!manager.exitPanel.active)
+        if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Resolve sudoku button");
         }
@@ -56,7 +49,7 @@ public class MainController : MonoBehaviour
 
     public void buttonStatistics()
     {
-        if (!manager.exitPanel.active)
+        if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Statistics button");
         }
@@ -64,7 +57,7 @@ public class MainController : MonoBehaviour
 
     public void buttonHowTo()
     {
-        if(!manager.exitPanel.active)
+        if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("How To button");
         }
@@ -73,6 +66,6 @@ public class MainController : MonoBehaviour
     public void buttonExitGame()
     {
         Debug.Log("Exit Game button");
-        manager.exitPanel.setActive(true);
+        MainMenuManager.exitPanel.setActive(true);
     }
 }

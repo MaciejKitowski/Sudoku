@@ -18,8 +18,10 @@ public class LevelManager : MonoBehaviour
         for(int i = 0; i < 81; ++i)
         {
             easyLevels[0].arena[i].display = true;
-            easyLevels[0].arena[i].value = i;
+            easyLevels[0].arena[i].value = 1;
         }
+
+        easyLevels[0].arena[20].display = false;
 
         easyLevels.Add(new Level());
 

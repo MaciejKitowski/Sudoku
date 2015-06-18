@@ -3,10 +3,10 @@ using System.Collections;
 
 public class MainMenuManager : MonoBehaviour 
 {
-    public ExitGameController exitPanel;
-    public MainController mainMenu;
-    public SelectModeController selectModePanel;
-    public SelectLevelController selectLevelPanel;
+    public static ExitGameController exitPanel;
+    public static MainController mainMenu;
+    public static SelectModeController selectModePanel;
+    public static SelectLevelController selectLevelPanel;
 	
 	void Start () 
     {

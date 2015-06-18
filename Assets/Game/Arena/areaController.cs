@@ -28,6 +28,13 @@ public class areaController : MonoBehaviour
         }
     }
 
+    public void reset()
+    {
+        value = 0;
+        canEdit = true;
+        valueText.text = " ";
+    }
+
     public void setValue(int val)
     {
         value = val;
