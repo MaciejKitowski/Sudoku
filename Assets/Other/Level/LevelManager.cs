@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
         
         for(int i = 0; i < 81; ++i)
         {
-            easyLevels[0].arenaValue[i] = i;
-            easyLevels[0].displayValue[i] = true;
+            easyLevels[0].arena[i].display = true;
+            easyLevels[0].arena[i].value = i;
         }
 
         easyLevels.Add(new Level());
@@ -28,8 +28,8 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < 81; ++i)
         {
-            easyLevels[1].arenaValue[i] = i+5;
-            easyLevels[1].displayValue[i] = true;
+            easyLevels[1].arena[i].display = true;
+            easyLevels[1].arena[i].value = i + 5;
         }
 	}
 }
