@@ -9,7 +9,7 @@ public class areaController : MonoBehaviour
 
     private Text valueText;
 	
-	void Start () 
+	void Awake() 
     {
         valueText = gameObject.GetComponentInChildren<Text>();
         valueText.text = " ";

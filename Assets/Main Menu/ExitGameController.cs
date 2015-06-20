@@ -26,6 +26,7 @@ public class ExitGameController : MonoBehaviour
 
     public void ButtonYes()
     {
+        LevelManager.Save();
         Debug.Log("Yes button");
         Application.Quit();
     }
