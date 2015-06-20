@@ -102,7 +102,6 @@ public class SelectLevelController : MonoBehaviour
                 break;
         }
 
-        gameManager.resetTimer();
         gameManager.arena.setActive(true);
         MainMenuManager.mainMenu.setActive(false);
         setActive(false);

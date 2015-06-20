@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour
 
         numpad.gameObject.SetActive(false);
         checkButton.deactivate();
+
+        LevelManager.Load();
     }
 	
 	void Update () 
@@ -29,6 +31,12 @@ public class gameManager : MonoBehaviour
 
         if (arena.checkEmpty()) checkButton.activate();
         else checkButton.deactivate();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            arena.setActive(false);
+            MainMenuManager.mainMenu.setActive(true);
+        }
 	}
 
     public static void resetTimer()

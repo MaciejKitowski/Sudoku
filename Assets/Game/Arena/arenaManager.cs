@@ -36,6 +36,8 @@ public class arenaManager : MonoBehaviour
 
     public void resetAreaValues()
     {
+        gameManager.moves = 0;
+        gameManager.resetTimer();
         for(int y = 0, i = 0; y < 9; ++y)
         {
             for (int x = 0; x < 9 && i < 81; ++x, ++i) area[x, y].reset();
