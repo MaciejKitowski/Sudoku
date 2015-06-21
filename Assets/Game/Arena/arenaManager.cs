@@ -52,7 +52,8 @@ public class arenaManager : MonoBehaviour
         {
             for (int x = 0; x < 9 && i < 81; ++x, ++i)
             {
-                if (activeLevel.arena[i].display) area[x, y].setConstValue(activeLevel.arena[i].value);
+                if (activeLevel.getDisplay(i)) area[x, y].setConstValue(activeLevel.getValue(i));
+                //if (activeLevel.arena[i].display) area[x, y].setConstValue(activeLevel.arena[i].value);
             }
         }
     }

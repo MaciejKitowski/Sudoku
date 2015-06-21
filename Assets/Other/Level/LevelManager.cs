@@ -19,24 +19,24 @@ public class LevelManager : MonoBehaviour
         easyLevels[easyLevels.Count - 1].bestMoves = easyLevels.Count * 2;
         easyLevels[easyLevels.Count - 1].bestTime = easyLevels.Count * 5F;
 
-        for (int i = 0; i < 81; ++i)
+        //easyLevels[easyLevels.Count - 1].test = "1111111111111111";
+
+        easyLevels[easyLevels.Count - 1].value = "123456789123456789123456789123456789123456789123456789123456789123456789123456789";
+        easyLevels[easyLevels.Count - 1].display = "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTFFFTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
+
+        /*for (int i = 0; i < 81; ++i)
         {
             easyLevels[easyLevels.Count - 1].arena[i].display = true;
             easyLevels[easyLevels.Count - 1].arena[i].value = easyLevels.Count * 2 + 1;
-        }
+        }*/
     }
 
     public static void Save()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(List<Level>));
 
-        //Save easy levels
         using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsEasy.xml"), FileMode.Create)) serializer.Serialize(stream, easyLevels);
-
-        //Save medium levels
         using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsMedium.xml"), FileMode.Create)) serializer.Serialize(stream, mediumLevels);
-
-        //Save hard levels
         using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsHard.xml"), FileMode.Create)) serializer.Serialize(stream, hardLevels);
     }
 
@@ -46,20 +46,27 @@ public class LevelManager : MonoBehaviour
 
         if (File.Exists(Path.Combine(Application.persistentDataPath, "levelsEasy.xml")))
         {
-            //Load easy levels
             using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsEasy.xml"), FileMode.Open)) easyLevels = (List<Level>)serializer.Deserialize(stream);
-            //Load medium levels
             using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsMedium.xml"), FileMode.Open)) mediumLevels = (List<Level>)serializer.Deserialize(stream);
-            //Load hard levels
             using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsHard.xml"), FileMode.Open)) hardLevels = (List<Level>)serializer.Deserialize(stream);
         }
-        else Save();
+        else
+        {
+            //There should be creating new XML file
+            Save();
+        }
     }
 
 
 
 	void Start () 
     {
+        //string str = "42";
+
+        /*Debug.Log(str);
+        Debug.Log(int.Parse(str[0].ToString()));*/
+        
+
        /* mediumLevels.Add(new Level());
 
 

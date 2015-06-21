@@ -33,7 +33,10 @@ public class SelectLevelController : MonoBehaviour
             //Set values on arena
             for (int i = 0; i < 81; ++i)
             {
-                if (LevelManager.easyLevels[activeLevel].arena[i].display) arena.setValue(i, LevelManager.easyLevels[activeLevel].arena[i].value.ToString());
+                /*if (LevelManager.easyLevels[activeLevel].arena[i].display) arena.setValue(i, LevelManager.easyLevels[activeLevel].arena[i].value.ToString());
+                else arena.setValue(i, " ");*/
+
+                if (LevelManager.easyLevels[activeLevel].getDisplay(i)) arena.setValue(i, LevelManager.easyLevels[activeLevel].getValue(i).ToString());
                 else arena.setValue(i, " ");
             }
 
