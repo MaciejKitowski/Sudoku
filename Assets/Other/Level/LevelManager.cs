@@ -12,25 +12,6 @@ public class LevelManager : MonoBehaviour
     public static List<Level> mediumLevels = new List<Level>();
     public static List<Level> hardLevels = new List<Level>();
 
-    public static void tests()
-    {
-        easyLevels.Add(new Level());
-
-        easyLevels[easyLevels.Count - 1].bestMoves = easyLevels.Count * 2;
-        easyLevels[easyLevels.Count - 1].bestTime = easyLevels.Count * 5F;
-
-        //easyLevels[easyLevels.Count - 1].test = "1111111111111111";
-
-        easyLevels[easyLevels.Count - 1].value = "123456789123456789123456789123456789123456789123456789123456789123456789123456789";
-        easyLevels[easyLevels.Count - 1].display = "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTFFFTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
-
-        /*for (int i = 0; i < 81; ++i)
-        {
-            easyLevels[easyLevels.Count - 1].arena[i].display = true;
-            easyLevels[easyLevels.Count - 1].arena[i].value = easyLevels.Count * 2 + 1;
-        }*/
-    }
-
     public static void Save()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(List<Level>));
@@ -50,17 +31,37 @@ public class LevelManager : MonoBehaviour
             using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsMedium.xml"), FileMode.Open)) mediumLevels = (List<Level>)serializer.Deserialize(stream);
             using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "levelsHard.xml"), FileMode.Open)) hardLevels = (List<Level>)serializer.Deserialize(stream);
         }
-        else
-        {
-            //There should be creating new XML file
-            Save();
-        }
+        else createNewXML();
     }
 
+    private static void createNewXML()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(List<Level>));
+        TextAsset XmlLevelsEasy = Resources.Load("levelsEasyXMLprefab") as TextAsset;
+        TextAsset XmlLevelsMedium = Resources.Load("levelsMediumXMLprefab") as TextAsset;
+        TextAsset XmlLevelsHard = Resources.Load("levelsHardXMLprefab") as TextAsset;
 
+        using (StringReader reader = new StringReader(XmlLevelsEasy.text)) easyLevels = (List<Level>)serializer.Deserialize(reader);
+        using (StringReader reader = new StringReader(XmlLevelsMedium.text)) mediumLevels = (List<Level>)serializer.Deserialize(reader);
+        using (StringReader reader = new StringReader(XmlLevelsHard.text)) hardLevels = (List<Level>)serializer.Deserialize(reader);
+
+        Save();
+    }
+
+    /*string texture = "Assets/Resources/Textures/Turner.png";
+    Texture2D inputTexture = (Texture2D)Resources.LoadAssetAtPath(texture, typeof(Texture2D));*/
+
+
+    
 
 	void Start () 
     {
+        //XmlLevelsEasy = 
+
+        //XmlLevelsEasy = Resources.Load("levelsEasyXMLprefab.xml") as TextAsset;
+
+        //Debug.Log(XmlLevelsEasy.name);
+
         //string str = "42";
 
         /*Debug.Log(str);

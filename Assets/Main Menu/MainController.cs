@@ -43,7 +43,6 @@ public class MainController : MonoBehaviour
     {
         if (!MainMenuManager.exitPanel.active)
         {
-            LevelManager.tests();
             Debug.Log("Resolve sudoku button");
         }
     }
