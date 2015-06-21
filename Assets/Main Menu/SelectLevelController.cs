@@ -12,13 +12,15 @@ public class SelectLevelController : MonoBehaviour
 
     private Text bestMoves;
     private Text bestTime;
+    private Text selectedLevel;
     private SelectLevelArenaController arena;
 
     void Start()
     {
         arena = gameObject.transform.GetComponentInChildren<SelectLevelArenaController>();
-        bestMoves = gameObject.transform.GetChild(6).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         bestTime = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        bestMoves = gameObject.transform.GetChild(6).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        selectedLevel = gameObject.transform.GetChild(7).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
     }
 
 	void Update () 
@@ -33,9 +35,6 @@ public class SelectLevelController : MonoBehaviour
             //Set values on arena
             for (int i = 0; i < 81; ++i)
             {
-                /*if (LevelManager.easyLevels[activeLevel].arena[i].display) arena.setValue(i, LevelManager.easyLevels[activeLevel].arena[i].value.ToString());
-                else arena.setValue(i, " ");*/
-
                 if (LevelManager.easyLevels[activeLevel].getDisplay(i)) arena.setValue(i, LevelManager.easyLevels[activeLevel].getValue(i).ToString());
                 else arena.setValue(i, " ");
             }
@@ -52,6 +51,9 @@ public class SelectLevelController : MonoBehaviour
                 bestTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
             else bestTime.text = "Empty";
+
+            //Set active selected level
+            selectedLevel.text = (activeLevel + 1).ToString() + " / " + LevelManager.easyLevels.Count.ToString();
         }
     }
 

@@ -50,31 +50,20 @@ public class arenaManager : MonoBehaviour
 
         for(int y = 0, i = 0; y < 9; ++y)
         {
-            for (int x = 0; x < 9 && i < 81; ++x, ++i)
-            {
-                if (activeLevel.getDisplay(i)) area[x, y].setConstValue(activeLevel.getValue(i));
-                //if (activeLevel.arena[i].display) area[x, y].setConstValue(activeLevel.arena[i].value);
-            }
-        }
-    }
-
-    public void setAreaValues()
-    {
-        for(int y = 0, i = 1; y < 9; ++y)
-        {
-            for (int x = 0; x < 9; ++x, ++i) area[x, y].setConstValue(i);
+            for (int x = 0; x < 9 && i < 81; ++x, ++i) if (activeLevel.getDisplay(i)) area[x, y].setConstValue(activeLevel.getValue(i));
         }
     }
 
     public void setActive(bool state)
     {
-        if (state == true)
+        switch(state)
         {
-            gameObject.transform.parent.gameObject.SetActive(true);
-        }
-        else
-        {
-            gameObject.transform.parent.gameObject.SetActive(false);
+            case true:
+                gameObject.transform.parent.gameObject.SetActive(true);
+                break;
+            case false:
+                gameObject.transform.parent.gameObject.SetActive(false);
+                break;
         }
     }
 
@@ -149,11 +138,6 @@ public class arenaManager : MonoBehaviour
             }
         }
 
-        //Load areas from buffer
-        for (int y = 0, i = 0; y < 9; ++y)
-        {
-            for (int x = 0; x < 9; ++x, ++i) area[x, y] = buffer[i];
-            //Debug.Log(area[x, y] + " : " + area[x, y].gameObject.transform.parent.gameObject.transform.parent.gameObject.name + " -- " + x + " : " + y);
-        }
+        for (int y = 0, i = 0; y < 9; ++y) for (int x = 0; x < 9; ++x, ++i) area[x, y] = buffer[i]; //Load areas from buffer
     }
 }

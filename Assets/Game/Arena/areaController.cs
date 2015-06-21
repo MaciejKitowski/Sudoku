@@ -33,6 +33,7 @@ public class areaController : MonoBehaviour
         value = 0;
         canEdit = true;
         valueText.text = " ";
+        gameObject.GetComponent<RawImage>().color = new Color32(255, 255, 255, 255);
     }
 
     public void setValue(int val)

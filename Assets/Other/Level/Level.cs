@@ -15,17 +15,6 @@ public class Level
     public string value;
     public string display; // T - display, F - not display
 
-    public struct areaField
-    {
-        public bool display;
-        public int value;
-    }
-
-    /*[XmlArray("ArenaValues"), XmlArrayItem("Area")]
-    public areaField[] arena = new areaField[81];*/
-
-
-
     public int getValue(int pos)
     {
         return int.Parse(value[pos].ToString());
@@ -42,7 +31,7 @@ public class Level
                 return false;
 
             default:
-                Debug.Log("Return bool error");
+                Debug.LogError("Return bool error");
                 return false;
         }
     }

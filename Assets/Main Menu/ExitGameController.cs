@@ -12,21 +12,23 @@ public class ExitGameController : MonoBehaviour
 	
     public void setActive(bool state)
     {
-        if(state == true)
+        switch(state)
         {
-            gameObject.SetActive(true);
-            active = true;
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            active = false;
+            case true:
+                active = true;
+                LevelManager.Save();
+                gameObject.SetActive(true);
+                break;
+
+            case false:
+                active = false;
+                gameObject.SetActive(false);
+                break;
         }
     }
 
     public void ButtonYes()
     {
-        LevelManager.Save();
         Debug.Log("Yes button");
         Application.Quit();
     }

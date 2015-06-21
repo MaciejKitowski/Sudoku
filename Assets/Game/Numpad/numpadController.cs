@@ -6,20 +6,6 @@ public class numpadController : MonoBehaviour
     public enum buttonType { BUTTON_NUMBER, BUTTON_BACK, BUTTON_CLEAR }
     public areaController selectedArea;
 
-	void Start ()
-    {
-	
-	}
-	
-
-	void Update ()
-    {
-	
-	}
-
-
-
-
     public bool isDisplayed()
     {
         if (selectedArea == null) return false;

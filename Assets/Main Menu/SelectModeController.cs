@@ -12,15 +12,16 @@ public class SelectModeController : MonoBehaviour
 
     public void setActive(bool state)
     {
-        if (state == true)
+        switch(state)
         {
-            gameObject.SetActive(true);
-            active = true;
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            active = false;
+            case true:
+                active = true;
+                gameObject.SetActive(true);
+                break;
+            case false:
+                active = false;
+                gameObject.SetActive(false);
+                break;
         }
     }
 
