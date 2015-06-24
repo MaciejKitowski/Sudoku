@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SelectLevelController : MonoBehaviour 
 {
@@ -14,6 +15,7 @@ public class SelectLevelController : MonoBehaviour
     private Text bestTime;
     private Text selectedLevel;
     private SelectLevelArenaController arena;
+    private List<Level> activeDifficult;
 
     void Start()
     {
@@ -28,32 +30,32 @@ public class SelectLevelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) setActive(false);
 	}
 
-    private void updateEasyLevel()
+    private void updateLevel()
     {
-        if(activeLevel < LevelManager.easyLevels.Count)
+        if(activeLevel < activeDifficult.Count)
         {
             //Set values on arena
             for (int i = 0; i < 81; ++i)
             {
-                if (LevelManager.easyLevels[activeLevel].getDisplay(i)) arena.setValue(i, LevelManager.easyLevels[activeLevel].getValue(i).ToString());
+                if (activeDifficult[activeLevel].getDisplay(i)) arena.setValue(i, activeDifficult[activeLevel].getValue(i).ToString());
                 else arena.setValue(i, " ");
             }
 
             //Set best moves
-            if (LevelManager.easyLevels[activeLevel].bestMoves != 0) bestMoves.text = LevelManager.easyLevels[activeLevel].bestMoves.ToString();
+            if (activeDifficult[activeLevel].bestMoves != 0) bestMoves.text = activeDifficult[activeLevel].bestMoves.ToString();
             else bestMoves.text = "Empty";
 
             //Set best time
-            if (LevelManager.easyLevels[activeLevel].bestTime != 0)
+            if(activeDifficult[activeLevel].bestTime != 0)
             {
-                int minutes = Mathf.FloorToInt(LevelManager.easyLevels[activeLevel].bestTime / 60F);
-                int seconds = Mathf.FloorToInt(LevelManager.easyLevels[activeLevel].bestTime - minutes * 60);
+                int minutes = Mathf.FloorToInt(activeDifficult[activeLevel].bestTime / 60F);
+                int seconds = Mathf.FloorToInt(activeDifficult[activeLevel].bestTime - minutes * 60);
                 bestTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
             else bestTime.text = "Empty";
 
             //Set active selected level
-            selectedLevel.text = (activeLevel + 1).ToString() + " / " + LevelManager.easyLevels.Count.ToString();
+            selectedLevel.text = (activeLevel + 1).ToString() + " / " + activeDifficult.Count.ToString();
         }
     }
 
@@ -69,15 +71,16 @@ public class SelectLevelController : MonoBehaviour
             switch(Difficult)
             {
                 case difficult.DIFFICULT_EASY:
-                    updateEasyLevel();
+                    activeDifficult = LevelManager.easyLevels;
                     break;
                 case difficult.DIFFICULT_MEDIUM:
-                    //updateMediumLevel();
+                    activeDifficult = LevelManager.mediumLevels;
                     break;
                 case difficult.DIFFICULT_HARD:
-                    //updateHardLevel();
+                    //activeDifficult = LevelManager.hardLevels;
                     break;
             }
+            updateLevel();
         }
         else
         {
@@ -91,21 +94,7 @@ public class SelectLevelController : MonoBehaviour
         Debug.Log("Select button");
 
         gameManager.arena.resetAreaValues();
-
-        switch(Difficult)
-        {
-            case difficult.DIFFICULT_EASY:
-                gameManager.arena.setAreaValues(LevelManager.easyLevels[activeLevel]);
-                break;
-
-            case difficult.DIFFICULT_MEDIUM:
-                //gameManager.arena.setAreaValues(LevelManager.mediumLevels[activeLevel]);
-                break;
-
-            case difficult.DIFFICULT_HARD:
-                //gameManager.arena.setAreaValues(LevelManager.hardLevels[activeLevel]);
-                break;
-        }
+        gameManager.arena.setAreaValues(activeDifficult[activeLevel]);
 
         gameManager.arena.setActive(true);
         MainMenuManager.mainMenu.setActive(false);
@@ -116,31 +105,15 @@ public class SelectLevelController : MonoBehaviour
     {
         Debug.Log("Next level button");
 
-        switch(Difficult)
+        if (activeLevel < LevelManager.easyLevels.Count - 1)
         {
-            case difficult.DIFFICULT_EASY:
-                if(activeLevel < LevelManager.easyLevels.Count - 1)
-                {
-                    ++activeLevel;
-                    updateEasyLevel();
-                }
-                break;
-
-            case difficult.DIFFICULT_MEDIUM:
-                if (activeLevel < LevelManager.mediumLevels.Count - 1)
-                {
-                    ++activeLevel;
-                    //updateMediumLevel();
-                }
-                break;
-
-            case difficult.DIFFICULT_HARD:
-                if (activeLevel < LevelManager.hardLevels.Count - 1)
-                {
-                    ++activeLevel;
-                    //updateHardLevel();
-                }
-                break;
+            ++activeLevel;
+            updateLevel();
+        }
+        else if (activeLevel == LevelManager.easyLevels.Count - 1)
+        {
+            activeLevel = 0;
+            updateLevel();
         }
     }
 
@@ -151,19 +124,12 @@ public class SelectLevelController : MonoBehaviour
         if (activeLevel > 0)
         {
             --activeLevel;
-
-            switch (Difficult)
-            {
-                case difficult.DIFFICULT_EASY:
-                    updateEasyLevel();
-                    break;
-                case difficult.DIFFICULT_MEDIUM:
-                    //updateMediumLevel();
-                    break;
-                case difficult.DIFFICULT_HARD:
-                    //updateHardLevel();
-                    break;
-            }
+            updateLevel();
+        }
+        else if (activeLevel == 0)
+        {
+            activeLevel = LevelManager.easyLevels.Count - 1;
+            updateLevel();
         }
     }
 }

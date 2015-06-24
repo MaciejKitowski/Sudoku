@@ -1,2 +1,45 @@
 <?xml version="1.0" encoding="windows-1250"?>
-<ArrayOfLevel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfLevel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Level>
+  <MovesRecord>0</MovesRecord>
+  <TimeRecord>0</TimeRecord>
+  <ArenaHorizontalLines>
+    <Line number="1">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="2">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="3">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="4">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="5">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="6">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="7">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="8">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+    <Line number="9">
+      <value>123456789</value>
+      <display>TTTTTTTTT</display>
+    </Line>
+  </ArenaHorizontalLines>
+</Level>
+</ArrayOfLevel>
