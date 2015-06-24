@@ -105,12 +105,12 @@ public class SelectLevelController : MonoBehaviour
     {
         Debug.Log("Next level button");
 
-        if (activeLevel < LevelManager.easyLevels.Count - 1)
+        if (activeLevel < activeDifficult.Count - 1)
         {
             ++activeLevel;
             updateLevel();
         }
-        else if (activeLevel == LevelManager.easyLevels.Count - 1)
+        else if (activeLevel == activeDifficult.Count - 1)
         {
             activeLevel = 0;
             updateLevel();
@@ -128,7 +128,7 @@ public class SelectLevelController : MonoBehaviour
         }
         else if (activeLevel == 0)
         {
-            activeLevel = LevelManager.easyLevels.Count - 1;
+            activeLevel = activeDifficult.Count - 1;
             updateLevel();
         }
     }
