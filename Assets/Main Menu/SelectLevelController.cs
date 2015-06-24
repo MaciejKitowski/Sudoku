@@ -77,7 +77,7 @@ public class SelectLevelController : MonoBehaviour
                     activeDifficult = LevelManager.mediumLevels;
                     break;
                 case difficult.DIFFICULT_HARD:
-                    //activeDifficult = LevelManager.hardLevels;
+                    activeDifficult = LevelManager.hardLevels;
                     break;
             }
             updateLevel();
