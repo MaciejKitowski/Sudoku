@@ -95,10 +95,10 @@ public class DebugAddingLevelsController : MonoBehaviour
                 LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].value = null;
                 LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].display = null;
 
+                LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].lineNumber = i+1;
+
                 for (int j = 0; j < 9; ++j)
                 {
-                    LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].lineNumber = (uint)j;
-
                     LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].value += line[i].area[j].value.ToString();
 
                     if (line[i].area[j].canEdit == true) LevelManager.easyLevels[LevelManager.easyLevels.Count - 1].lines[i].display += "F";
@@ -130,10 +130,10 @@ public class DebugAddingLevelsController : MonoBehaviour
                 LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].value = null;
                 LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].display = null;
 
+                LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].lineNumber = i + 1;
+
                 for (int j = 0; j < 9; ++j)
                 {
-                    LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].lineNumber = (uint)j;
-
                     LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].value += line[i].area[j].value.ToString();
 
                     if (line[i].area[j].canEdit == true) LevelManager.mediumLevels[LevelManager.mediumLevels.Count - 1].lines[i].display += "F";
@@ -165,10 +165,10 @@ public class DebugAddingLevelsController : MonoBehaviour
                 LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].value = null;
                 LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].display = null;
 
+                LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].lineNumber = i + 1;
+
                 for (int j = 0; j < 9; ++j)
                 {
-                    LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].lineNumber = (uint)j;
-
                     LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].value += line[i].area[j].value.ToString();
 
                     if (line[i].area[j].canEdit == true) LevelManager.hardLevels[LevelManager.hardLevels.Count - 1].lines[i].display += "F";

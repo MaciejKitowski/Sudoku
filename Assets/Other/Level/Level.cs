@@ -15,7 +15,7 @@ public class Level
     public struct Line
     {
         [XmlAttribute("number")]
-        public uint lineNumber;
+        public int lineNumber;
         public string value;
         public string display; // T - display, F - not display
     }
