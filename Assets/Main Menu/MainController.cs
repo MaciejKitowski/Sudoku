@@ -74,5 +74,6 @@ public class MainController : MonoBehaviour
     {
         Debug.LogWarning("[DEBUG] Add new levels button");
         MainMenuManager.addLevels.setActive(true);
+        MainMenuManager.addLevels.reset();
     }
 }
