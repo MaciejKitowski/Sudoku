@@ -69,4 +69,10 @@ public class MainController : MonoBehaviour
         Debug.Log("Exit Game button");
         MainMenuManager.exitPanel.setActive(true);
     }
+
+    public void buttonDEBUGnewLevel()
+    {
+        Debug.LogWarning("[DEBUG] Add new levels button");
+        MainMenuManager.addLevels.setActive(true);
+    }
 }
