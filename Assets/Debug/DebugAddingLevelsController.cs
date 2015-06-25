@@ -5,15 +5,18 @@ using System.Collections;
 public class DebugAddingLevelsController : MonoBehaviour 
 {
     public bool active;
-
     public bool isConstant;
 
+    public DebugNumpadController numpad;
 
     private Button constantButton;
+    
 
     void Awake()
     {
         constantButton = gameObject.transform.GetChild(2).gameObject.GetComponent<Button>();
+        numpad = gameObject.transform.GetComponentInChildren<DebugNumpadController>();
+        numpad.hide();
     }
 	
 
@@ -36,36 +39,58 @@ public class DebugAddingLevelsController : MonoBehaviour
     {
         Debug.LogWarning("[DEBUG] - Toggle constant mode");
 
-        if(isConstant)
+        if(!numpad.isDisplayed())
         {
-            isConstant = false;
-            constantButton.image.color = Color.white;
-        }
-        else
-        {
-            isConstant = true;
-            constantButton.image.color = Color.red;
+            if (isConstant)
+            {
+                isConstant = false;
+                constantButton.image.color = Color.white;
+            }
+            else
+            {
+                isConstant = true;
+                constantButton.image.color = Color.red;
+            }
         }
     }
 
     public void buttonBack()
     {
         Debug.LogWarning("[DEBUG] - Back to menu");
-        setActive(false);
+        
+        if(!numpad.isDisplayed())
+        {
+            setActive(false);
+        }
     }
 
     public void buttonEasy()
     {
         Debug.LogWarning("[DEBUG] - Save to easy difficult");
+
+        if(!numpad.isDisplayed())
+        {
+
+        }
     }
 
     public void buttonMedium()
     {
         Debug.LogWarning("[DEBUG] - Save to medium difficult");
+
+        if(!numpad.isDisplayed())
+        {
+
+        }
     }
 
     public void buttonHard()
     {
         Debug.LogWarning("[DEBUG] - Save to hard difficult");
+
+        if(!numpad.isDisplayed())
+        {
+
+        }
     }
 }
