@@ -25,8 +25,11 @@ public class DebugAreaController : MonoBehaviour
         {
             Debug.Log(gameObject.transform.parent.transform.parent.name + " - " + gameObject.name);
 
-            manager.numpad.setSelectedArea(gameObject.GetComponent<DebugAreaController>());
-            manager.numpad.display();
+            if ((value == 0) || (manager.isConstant && !canEdit) || (!manager.isConstant && canEdit))
+            {
+                manager.numpad.setSelectedArea(gameObject.GetComponent<DebugAreaController>());
+                manager.numpad.display();
+            }
         }
     }
 
