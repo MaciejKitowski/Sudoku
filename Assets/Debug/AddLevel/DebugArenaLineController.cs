@@ -3,17 +3,17 @@ using System.Collections;
 
 public class DebugArenaLineController : MonoBehaviour 
 {
-    public DebugAreaController[] area;
+    public areaController[] area;
 
 
 	// Use this for initialization
 	void Awake () 
     {
-        area = new DebugAreaController[9];
+        area = new areaController[9];
 
         for(int i = 0; i < 9; ++i)
         {
-            area[i] = gameObject.transform.GetChild(i).gameObject.GetComponent<DebugAreaController>();
+            area[i] = gameObject.transform.GetChild(i).gameObject.GetComponent<areaController>();
         }
 	}
 

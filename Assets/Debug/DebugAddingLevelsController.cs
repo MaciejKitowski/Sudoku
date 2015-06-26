@@ -7,7 +7,7 @@ public class DebugAddingLevelsController : MonoBehaviour
     public bool active;
     public bool isConstant;
     public bool canSave;
-    public DebugNumpadController numpad;
+    public numpadController numpad;
 
     private Button constantButton;
     private DebugArenaLineController[] line;
@@ -20,7 +20,7 @@ public class DebugAddingLevelsController : MonoBehaviour
             line[i] = gameObject.transform.GetChild(1).gameObject.transform.GetChild(i + 1).GetComponent<DebugArenaLineController>();
         }
         constantButton = gameObject.transform.GetChild(2).gameObject.GetComponent<Button>();
-        numpad = gameObject.transform.GetComponentInChildren<DebugNumpadController>();
+        numpad = gameObject.transform.GetComponentInChildren<numpadController>();
         numpad.hide();
     }
 
