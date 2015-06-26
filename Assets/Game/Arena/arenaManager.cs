@@ -54,6 +54,20 @@ public class arenaManager : MonoBehaviour
         }
     }
 
+    public void setAreaValuesDEBUG(Level level)
+    {
+        activeLevel = level;
+
+        for (int y = 0, i = 0; y < 9; ++y)
+        {
+            for (int x = 0; x < 9 && i < 81; ++x, ++i)
+            {
+                if (activeLevel.getDisplay(i)) area[x, y].setConstValue(activeLevel.getValue(i));
+                else area[x, y].setValue(activeLevel.getValue(i));
+            }
+        }
+    }
+
     public void setActive(bool state)
     {
         switch(state)
@@ -112,6 +126,11 @@ public class arenaManager : MonoBehaviour
             for (int x = 0; x < 3; ++x) if (!square[x, y].checkSquare()) return false;
         }
         return true;
+    }
+
+    public Level getActiveLevel()
+    {
+        return activeLevel;
     }
 
     private void loadArea()

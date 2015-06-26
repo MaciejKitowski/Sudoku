@@ -6,9 +6,13 @@ public class gameManager : MonoBehaviour
     public static numpadController numpad;
     public static checkButtonController checkButton;
     public static arenaManager arena;
+    public static EndGameController endGamePanel;
 
     public static float timer;
     public static int moves;
+
+    public static bool randomGame;
+    public static bool countTime;
     
 	void Awake()
     {
@@ -18,8 +22,10 @@ public class gameManager : MonoBehaviour
         numpad = FindObjectOfType<numpadController>();
         checkButton = FindObjectOfType<checkButtonController>();
         arena = FindObjectOfType<arenaManager>();
+        endGamePanel = FindObjectOfType<EndGameController>();
 
         numpad.gameObject.SetActive(false);
+        endGamePanel.setActive(false);
         checkButton.deactivate();
 
         LevelManager.Load();
@@ -27,7 +33,7 @@ public class gameManager : MonoBehaviour
 	
 	void Update () 
     {
-        timer += Time.deltaTime;
+        if (countTime)timer += Time.deltaTime;
 
         if (arena.checkEmpty()) checkButton.activate();
         else checkButton.deactivate();
@@ -41,6 +47,7 @@ public class gameManager : MonoBehaviour
 
     public static void resetTimer()
     {
+        countTime = true;
         timer = 0F;
     }
 
@@ -53,6 +60,8 @@ public class gameManager : MonoBehaviour
         else
         {
             Debug.Log("--- SUDOKU IS CORRECT ---");
+            endGamePanel.setActive(true);
+            endGamePanel.refresh(arena.getActiveLevel());
         }         
     }
 }

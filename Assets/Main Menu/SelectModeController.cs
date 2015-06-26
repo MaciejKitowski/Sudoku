@@ -51,18 +51,32 @@ public class SelectModeController : MonoBehaviour
     public void buttonRandEasy()
     {
         Debug.Log("Random Easy button");
+        gameManager.arena.resetAreaValues();
+        gameManager.arena.setAreaValues(LevelManager.easyLevels[Random.Range(0,LevelManager.easyLevels.Count-1)]);
+        gameManager.arena.setActive(true);
+        MainMenuManager.mainMenu.setActive(false);
         setActive(false);
     }
 
     public void buttonRandMedium()
     {
         Debug.Log("Random Medium button");
+        gameManager.randomGame = true;
+        gameManager.arena.resetAreaValues();
+        gameManager.arena.setAreaValues(LevelManager.mediumLevels[Random.Range(0, LevelManager.mediumLevels.Count - 1)]);
+        gameManager.arena.setActive(true);
+        MainMenuManager.mainMenu.setActive(false);
         setActive(false);
     }
 
     public void buttonRandHard()
     {
         Debug.Log("Random Hard button");
+        gameManager.randomGame = true;
+        gameManager.arena.resetAreaValues();
+        gameManager.arena.setAreaValues(LevelManager.hardLevels[Random.Range(0, LevelManager.hardLevels.Count - 1)]);
+        gameManager.arena.setActive(true);
+        MainMenuManager.mainMenu.setActive(false);
         setActive(false);
     }
 }

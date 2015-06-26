@@ -93,10 +93,12 @@ public class SelectLevelController : MonoBehaviour
     {
         Debug.Log("Select button");
 
+        gameManager.randomGame = false;
         gameManager.arena.resetAreaValues();
         gameManager.arena.setAreaValues(activeDifficult[activeLevel]);
-
         gameManager.arena.setActive(true);
+        gameManager.endGamePanel.setActive(false);
+        gameManager.numpad.hide();
         MainMenuManager.mainMenu.setActive(false);
         setActive(false);
     }
@@ -131,5 +133,19 @@ public class SelectLevelController : MonoBehaviour
             activeLevel = activeDifficult.Count - 1;
             updateLevel();
         }
+    }
+
+    public void buttonDebugSelectArenaFilled()
+    {
+        Debug.LogWarning("Select filled arena button");
+
+        gameManager.randomGame = false;
+        gameManager.arena.resetAreaValues();
+        gameManager.arena.setAreaValuesDEBUG(activeDifficult[activeLevel]);
+        gameManager.arena.setActive(true);
+        gameManager.endGamePanel.setActive(false);
+        gameManager.numpad.hide();
+        MainMenuManager.mainMenu.setActive(false);
+        setActive(false);
     }
 }
