@@ -1680,4 +1680,424 @@
       </Line>
     </ArenaHorizontalLines>
   </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>812659734</value>
+        <display>FTFTTFFFF</display>
+      </Line>
+      <Line number="2">
+        <value>695734812</value>
+        <display>TFTTFFTTF</display>
+      </Line>
+      <Line number="3">
+        <value>473182956</value>
+        <display>TFTTFFTFT</display>
+      </Line>
+      <Line number="4">
+        <value>547261389</value>
+        <display>TFTTTFFFF</display>
+      </Line>
+      <Line number="5">
+        <value>236598471</value>
+        <display>FFFFTTTFF</display>
+      </Line>
+      <Line number="6">
+        <value>981347265</value>
+        <display>TTFFTTTTT</display>
+      </Line>
+      <Line number="7">
+        <value>768425193</value>
+        <display>FFFTFFFFF</display>
+      </Line>
+      <Line number="8">
+        <value>329816547</value>
+        <display>FTFFFFFTT</display>
+      </Line>
+      <Line number="9">
+        <value>154973628</value>
+        <display>FTFFTTFFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>831694752</value>
+        <display>FFTFTFTFT</display>
+      </Line>
+      <Line number="2">
+        <value>426857391</value>
+        <display>TTTFTFFFT</display>
+      </Line>
+      <Line number="3">
+        <value>975213648</value>
+        <display>FFTFFFTTT</display>
+      </Line>
+      <Line number="4">
+        <value>259168473</value>
+        <display>TFTTFFFTF</display>
+      </Line>
+      <Line number="5">
+        <value>317549826</value>
+        <display>FFFFTTFTF</display>
+      </Line>
+      <Line number="6">
+        <value>648732519</value>
+        <display>FFTFTFTTT</display>
+      </Line>
+      <Line number="7">
+        <value>193485267</value>
+        <display>FTFFFTTFF</display>
+      </Line>
+      <Line number="8">
+        <value>764321985</value>
+        <display>FTFTFTFFF</display>
+      </Line>
+      <Line number="9">
+        <value>582976134</value>
+        <display>FFTFFTFTF</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>192456783</value>
+        <display>TFFTTFTFT</display>
+      </Line>
+      <Line number="2">
+        <value>647238159</value>
+        <display>FFFTTFFFF</display>
+      </Line>
+      <Line number="3">
+        <value>385971264</value>
+        <display>FFFTFTTFF</display>
+      </Line>
+      <Line number="4">
+        <value>418725936</value>
+        <display>FFTTFTFFT</display>
+      </Line>
+      <Line number="5">
+        <value>236194875</value>
+        <display>FTFTFFTFF</display>
+      </Line>
+      <Line number="6">
+        <value>579683421</value>
+        <display>FFFFFFTTT</display>
+      </Line>
+      <Line number="7">
+        <value>851347692</value>
+        <display>TFFTTTFFF</display>
+      </Line>
+      <Line number="8">
+        <value>724569318</value>
+        <display>TTTTFTFTF</display>
+      </Line>
+      <Line number="9">
+        <value>963812547</value>
+        <display>TFTFFFTFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>241978653</value>
+        <display>FTFFFTTTT</display>
+      </Line>
+      <Line number="2">
+        <value>879356241</value>
+        <display>FTTTFTFTF</display>
+      </Line>
+      <Line number="3">
+        <value>563241879</value>
+        <display>FTFTTFTTF</display>
+      </Line>
+      <Line number="4">
+        <value>498715326</value>
+        <display>TTTTFFFFT</display>
+      </Line>
+      <Line number="5">
+        <value>752863194</value>
+        <display>FFFFFFTTT</display>
+      </Line>
+      <Line number="6">
+        <value>316492785</value>
+        <display>FFFFFFTFF</display>
+      </Line>
+      <Line number="7">
+        <value>927634518</value>
+        <display>FFTTFTTFF</display>
+      </Line>
+      <Line number="8">
+        <value>134587962</value>
+        <display>TFFTTTFFT</display>
+      </Line>
+      <Line number="9">
+        <value>685129437</value>
+        <display>FFTFTFFFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>843126759</value>
+        <display>FFTTTFFTF</display>
+      </Line>
+      <Line number="2">
+        <value>651978234</value>
+        <display>FFFFFTTFF</display>
+      </Line>
+      <Line number="3">
+        <value>279435816</value>
+        <display>FTTFTFFFF</display>
+      </Line>
+      <Line number="4">
+        <value>138642975</value>
+        <display>TFTTTFFTF</display>
+      </Line>
+      <Line number="5">
+        <value>596317428</value>
+        <display>TTFFTTTFT</display>
+      </Line>
+      <Line number="6">
+        <value>427859163</value>
+        <display>FTTFTFFFF</display>
+      </Line>
+      <Line number="7">
+        <value>312584697</value>
+        <display>FTFTTFTFT</display>
+      </Line>
+      <Line number="8">
+        <value>985761342</value>
+        <display>FFTTTTTFF</display>
+      </Line>
+      <Line number="9">
+        <value>764293581</value>
+        <display>FTFFTTFFF</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>836571429</value>
+        <display>TTFTFTFFT</display>
+      </Line>
+      <Line number="2">
+        <value>572894361</value>
+        <display>FTFFTTTTF</display>
+      </Line>
+      <Line number="3">
+        <value>491362857</value>
+        <display>FTFFFFFTF</display>
+      </Line>
+      <Line number="4">
+        <value>643128975</value>
+        <display>FFTTTFFTF</display>
+      </Line>
+      <Line number="5">
+        <value>725439186</value>
+        <display>FFTTFFFFT</display>
+      </Line>
+      <Line number="6">
+        <value>918657234</value>
+        <display>TTTFFFFTF</display>
+      </Line>
+      <Line number="7">
+        <value>257943618</value>
+        <display>FFFTFTFTF</display>
+      </Line>
+      <Line number="8">
+        <value>169285743</value>
+        <display>FFTTTTFTF</display>
+      </Line>
+      <Line number="9">
+        <value>384716592</value>
+        <display>TTFFTTFFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>493657812</value>
+        <display>FFTFTFTTT</display>
+      </Line>
+      <Line number="2">
+        <value>862491375</value>
+        <display>FTFTTTFFF</display>
+      </Line>
+      <Line number="3">
+        <value>157832946</value>
+        <display>TTFFFFFFF</display>
+      </Line>
+      <Line number="4">
+        <value>731249658</value>
+        <display>FTFFFFFTT</display>
+      </Line>
+      <Line number="5">
+        <value>546183297</value>
+        <display>TFFFTTTFT</display>
+      </Line>
+      <Line number="6">
+        <value>928576431</value>
+        <display>TTFFFTFFF</display>
+      </Line>
+      <Line number="7">
+        <value>219764583</value>
+        <display>TTTFFTFFT</display>
+      </Line>
+      <Line number="8">
+        <value>684315729</value>
+        <display>FFTTFFTFT</display>
+      </Line>
+      <Line number="9">
+        <value>375928164</value>
+        <display>FFFTFFFFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>921856347</value>
+        <display>FFFTFTTTF</display>
+      </Line>
+      <Line number="2">
+        <value>358174296</value>
+        <display>FTFFTTFFF</display>
+      </Line>
+      <Line number="3">
+        <value>746923851</value>
+        <display>FFFTTFFFF</display>
+      </Line>
+      <Line number="4">
+        <value>597482613</value>
+        <display>TFFFFTTTT</display>
+      </Line>
+      <Line number="5">
+        <value>862391475</value>
+        <display>FTTTTFFFT</display>
+      </Line>
+      <Line number="6">
+        <value>413765982</value>
+        <display>TFFFFFFFT</display>
+      </Line>
+      <Line number="7">
+        <value>174639528</value>
+        <display>FFTFTTFFT</display>
+      </Line>
+      <Line number="8">
+        <value>685247139</value>
+        <display>FFFFTTTFT</display>
+      </Line>
+      <Line number="9">
+        <value>239518764</value>
+        <display>TTTFFFFFT</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>481796523</value>
+        <display>TTTTFFFFF</display>
+      </Line>
+      <Line number="2">
+        <value>539241678</value>
+        <display>TFFTFFFTF</display>
+      </Line>
+      <Line number="3">
+        <value>726385491</value>
+        <display>FTFFTTFTF</display>
+      </Line>
+      <Line number="4">
+        <value>865973214</value>
+        <display>FFFFTFFFF</display>
+      </Line>
+      <Line number="5">
+        <value>347152986</value>
+        <display>TTTTFTFFT</display>
+      </Line>
+      <Line number="6">
+        <value>912864735</value>
+        <display>TTTTFFFFT</display>
+      </Line>
+      <Line number="7">
+        <value>258437169</value>
+        <display>FFFFFFTTT</display>
+      </Line>
+      <Line number="8">
+        <value>194628357</value>
+        <display>FFFTTTFTT</display>
+      </Line>
+      <Line number="9">
+        <value>673519842</value>
+        <display>TTTFFTFTF</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
+  <Level>
+    <MovesRecord>0</MovesRecord>
+    <TimeRecord>0</TimeRecord>
+    <ArenaHorizontalLines>
+      <Line number="1">
+        <value>948672513</value>
+        <display>FTTFFTTTT</display>
+      </Line>
+      <Line number="2">
+        <value>536841279</value>
+        <display>TFTTTTFFF</display>
+      </Line>
+      <Line number="3">
+        <value>721539846</value>
+        <display>FTFTFFTFF</display>
+      </Line>
+      <Line number="4">
+        <value>253198467</value>
+        <display>FFTTTFTFF</display>
+      </Line>
+      <Line number="5">
+        <value>684327195</value>
+        <display>FTFFFFTFT</display>
+      </Line>
+      <Line number="6">
+        <value>179465328</value>
+        <display>FFTTTFTFT</display>
+      </Line>
+      <Line number="7">
+        <value>362784951</value>
+        <display>FFTFFFFTF</display>
+      </Line>
+      <Line number="8">
+        <value>895216734</value>
+        <display>FFFTTFTTT</display>
+      </Line>
+      <Line number="9">
+        <value>417953682</value>
+        <display>TFTFFFTFF</display>
+      </Line>
+    </ArenaHorizontalLines>
+  </Level>
 </ArrayOfLevel>
