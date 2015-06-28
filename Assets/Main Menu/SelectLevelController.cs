@@ -16,6 +16,11 @@ public class SelectLevelController : MonoBehaviour
     private Text selectedLevel;
     private SelectLevelArenaController arena;
     private List<Level> activeDifficult;
+    private float touchBeginPosition;
+    private float touchEndPosition;
+    private float touchDirection;
+
+    Slider slider;
 
     void Start()
     {
@@ -23,11 +28,23 @@ public class SelectLevelController : MonoBehaviour
         bestTime = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         bestMoves = gameObject.transform.GetChild(6).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
         selectedLevel = gameObject.transform.GetChild(7).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        slider = gameObject.transform.GetChild(9).gameObject.GetComponent<Slider>();
     }
 
 	void Update () 
     {
         if (Input.GetKeyDown(KeyCode.Escape)) setActive(false);
+
+        //Move between levels by touch
+        if (Input.GetTouch(0).phase == TouchPhase.Began) touchBeginPosition = Input.GetTouch(0).position.x;
+
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            touchEndPosition = Input.GetTouch(0).position.x;
+            touchDirection = touchEndPosition - touchBeginPosition;
+            if (touchDirection < 0F) buttonNextLevel(); //Right
+            if (touchDirection > 0F) buttonPreviousLevel(); //Left
+        }
 	}
 
     private void updateLevel()
@@ -80,6 +97,7 @@ public class SelectLevelController : MonoBehaviour
                     activeDifficult = LevelManager.hardLevels;
                     break;
             }
+            slider.maxValue = activeDifficult.Count;
             updateLevel();
         }
         else
@@ -117,6 +135,7 @@ public class SelectLevelController : MonoBehaviour
             activeLevel = 0;
             updateLevel();
         }
+        slider.value = activeLevel + 1;
     }
 
     public void buttonPreviousLevel()
@@ -133,6 +152,7 @@ public class SelectLevelController : MonoBehaviour
             activeLevel = activeDifficult.Count - 1;
             updateLevel();
         }
+        slider.value = activeLevel + 1;
     }
 
     public void buttonDebugSelectArenaFilled()
@@ -147,5 +167,11 @@ public class SelectLevelController : MonoBehaviour
         gameManager.numpad.hide();
         MainMenuManager.mainMenu.setActive(false);
         setActive(false);
+    }
+
+    public void sliderControl()
+    {
+        activeLevel = (int)slider.value - 1;
+        updateLevel();
     }
 }
