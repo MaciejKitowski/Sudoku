@@ -64,6 +64,7 @@ public class gameManager : MonoBehaviour
         else
         {
             Debug.Log("--- SUDOKU IS CORRECT ---");
+            audio.play(audioController.soundType.SOUND_GOODSUDOKU);
             endGamePanel.setActive(true);
             endGamePanel.refresh(arena.getActiveLevel());
         }         

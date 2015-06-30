@@ -21,7 +21,6 @@ public class EndGameController : MonoBehaviour
         movesValueLast = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).GetComponent<Text>();
     }
 
-
     public void setActive(bool state)
     {
         gameObject.SetActive(state);
@@ -48,6 +47,7 @@ public class EndGameController : MonoBehaviour
 
     public void buttonBackToMenu()
     {
+        gameManager.audio.play();
         MainMenuManager.mainMenu.setActive(true);
         gameManager.arena.setActive(false);
     }

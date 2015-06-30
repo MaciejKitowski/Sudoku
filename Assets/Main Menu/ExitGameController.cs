@@ -36,6 +36,7 @@ public class ExitGameController : MonoBehaviour
     public void ButtonNo()
     {
         Debug.Log("No button");
+        gameManager.audio.play();
         setActive(false);
     }
 }

@@ -36,6 +36,7 @@ public class MainController : MonoBehaviour
         if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Play game button");
+            gameManager.audio.play();
             MainMenuManager.selectModePanel.setActive(true);
         }
     }
@@ -45,6 +46,7 @@ public class MainController : MonoBehaviour
         if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Resolve sudoku button");
+            gameManager.audio.play();
         }
     }
 
@@ -53,6 +55,7 @@ public class MainController : MonoBehaviour
         if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("Statistics button");
+            gameManager.audio.play();
         }
     }
 
@@ -61,18 +64,21 @@ public class MainController : MonoBehaviour
         if (!MainMenuManager.exitPanel.active)
         {
             Debug.Log("How To button");
+            gameManager.audio.play();
         }
     }
 
     public void buttonExitGame()
     {
         Debug.Log("Exit Game button");
+        gameManager.audio.play();
         MainMenuManager.exitPanel.setActive(true);
     }
 
     public void buttonDEBUGnewLevel()
     {
         Debug.LogWarning("[DEBUG] Add new levels button");
+        gameManager.audio.play();
         MainMenuManager.addLevels.setActive(true);
         MainMenuManager.addLevels.reset();
     }

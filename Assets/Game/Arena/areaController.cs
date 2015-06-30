@@ -22,6 +22,8 @@ public class areaController : MonoBehaviour
 	
     void OnMouseDown()
     {
+        gameManager.audio.play();
+
         if(areaType == arenaType.ARENA_GAME)
         {
             if (!gameManager.numpad.isDisplayed() && canEdit)

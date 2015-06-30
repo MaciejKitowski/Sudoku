@@ -110,6 +110,7 @@ public class SelectLevelController : MonoBehaviour
     public void buttonSelect()
     {
         Debug.Log("Select button");
+        gameManager.audio.play();
 
         gameManager.randomGame = false;
         gameManager.arena.resetAreaValues();
@@ -124,6 +125,7 @@ public class SelectLevelController : MonoBehaviour
     public void buttonNextLevel()
     {
         Debug.Log("Next level button");
+        gameManager.audio.play();
 
         if (activeLevel < activeDifficult.Count - 1)
         {
@@ -141,6 +143,7 @@ public class SelectLevelController : MonoBehaviour
     public void buttonPreviousLevel()
     {
         Debug.Log("Previous level button");
+        gameManager.audio.play();
 
         if (activeLevel > 0)
         {
@@ -158,6 +161,7 @@ public class SelectLevelController : MonoBehaviour
     public void buttonDebugSelectArenaFilled()
     {
         Debug.LogWarning("Select filled arena button");
+        gameManager.audio.play();
 
         gameManager.randomGame = false;
         gameManager.arena.resetAreaValues();

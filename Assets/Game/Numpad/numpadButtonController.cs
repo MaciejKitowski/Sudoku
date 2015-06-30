@@ -48,6 +48,8 @@ public class numpadButtonController : MonoBehaviour
 
     void OnMouseDown()
     {
+        gameManager.audio.play();
+
         if (numType == numpadType.NUMPAD_GAME)
         {
             switch (type)

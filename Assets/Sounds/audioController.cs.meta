@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: cf131363f70e9ca4fa4ee15d517dc7ae
-timeCreated: 1435658657
+timeCreated: 1435660142
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - audioSrc: {instanceID: 0}
   - badSudokuSound: {fileID: 8300000, guid: e8fce6aa24cae70448b88b0cc7f1b904, type: 3}
+  - goodSudokuSound: {fileID: 8300000, guid: 9a1c87865d7e4e5408a36385379c6917, type: 3}
+  - buttonClickSound: {fileID: 8300000, guid: 65184fc0d754ef2448acf7d4e7e9430e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

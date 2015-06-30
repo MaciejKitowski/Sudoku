@@ -29,6 +29,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonPreEasy()
     {
         Debug.Log("Predefined Easy button");
+        gameManager.audio.play();
         setActive(false);
         MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_EASY);
     }
@@ -36,6 +37,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonPreMedium()
     {
         Debug.Log("Predefined Medium button");
+        gameManager.audio.play();
         setActive(false);
         MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_MEDIUM);
     }
@@ -43,6 +45,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonPreHard()
     {
         Debug.Log("Predefined Hard button");
+        gameManager.audio.play();
         setActive(false);
         MainMenuManager.selectLevelPanel.setActive(true, SelectLevelController.difficult.DIFFICULT_HARD);
     }
@@ -51,6 +54,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonRandEasy()
     {
         Debug.Log("Random Easy button");
+        gameManager.audio.play();
         gameManager.arena.resetAreaValues();
         gameManager.arena.setAreaValues(LevelManager.easyLevels[Random.Range(0,LevelManager.easyLevels.Count-1)]);
         gameManager.arena.setActive(true);
@@ -61,6 +65,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonRandMedium()
     {
         Debug.Log("Random Medium button");
+        gameManager.audio.play();
         gameManager.randomGame = true;
         gameManager.arena.resetAreaValues();
         gameManager.arena.setAreaValues(LevelManager.mediumLevels[Random.Range(0, LevelManager.mediumLevels.Count - 1)]);
@@ -72,6 +77,7 @@ public class SelectModeController : MonoBehaviour
     public void buttonRandHard()
     {
         Debug.Log("Random Hard button");
+        gameManager.audio.play();
         gameManager.randomGame = true;
         gameManager.arena.resetAreaValues();
         gameManager.arena.setAreaValues(LevelManager.hardLevels[Random.Range(0, LevelManager.hardLevels.Count - 1)]);
