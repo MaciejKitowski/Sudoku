@@ -13,6 +13,8 @@ public class gameManager : MonoBehaviour
 
     public static bool randomGame;
     public static bool countTime;
+
+    public static audioController audio;
     
 	void Awake()
     {
@@ -23,6 +25,7 @@ public class gameManager : MonoBehaviour
         checkButton = FindObjectOfType<checkButtonController>();
         arena = FindObjectOfType<arenaManager>();
         endGamePanel = FindObjectOfType<EndGameController>();
+        audio = FindObjectOfType<audioController>();
 
         numpad.gameObject.SetActive(false);
         endGamePanel.setActive(false);
@@ -37,7 +40,7 @@ public class gameManager : MonoBehaviour
 
         if (arena.checkEmpty()) checkButton.activate();
         else checkButton.deactivate();
-
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             arena.setActive(false);
@@ -56,6 +59,7 @@ public class gameManager : MonoBehaviour
         if (!arena.checkHorizontal() || !arena.checkVertical() || !arena.checkSquare())
         {
             Debug.Log("--- Sudoku is incorrect ---");
+            audio.play(audioController.soundType.SOUND_BADSUDOKU);
         }
         else
         {
