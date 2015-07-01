@@ -65,7 +65,7 @@ public class SettingsController : MonoBehaviour
     public void buttonBackToMenu()
     {
         Debug.Log("Back to menu button");
-        //gameManager.audio.play();
+        gameManager.audio.play();
         Settings.saveToPlayerPrefs();
         setActive(false);
     }
@@ -73,14 +73,14 @@ public class SettingsController : MonoBehaviour
     public void toggleSounds()
     {
         Debug.Log("Toggle sounds mute");
-        //gameManager.audio.play();
+        gameManager.audio.play();
         Settings.soundMute = soundMute.isOn;
     }
 
     public void toggleInvertNumpad()
     {
         Debug.Log("Toggle invert numpad");
-        //gameManager.audio.play();
+        gameManager.audio.play();
         Settings.invertedNumpad = invertNumpad.isOn;
     }
 
