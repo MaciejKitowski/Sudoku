@@ -44,6 +44,26 @@ public class gameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             arena.setActive(false);
+
+            MainMenuManager.stats.totalMoves += gameManager.moves;
+            MainMenuManager.stats.totalTime += gameManager.timer;
+
+            switch (MainMenuManager.selectLevelPanel.Difficult)
+            {
+                case SelectLevelController.difficult.DIFFICULT_EASY:
+                    MainMenuManager.stats.easyTotalMoves += gameManager.moves;
+                    MainMenuManager.stats.easyTotalTime += gameManager.timer;
+                    break;
+                case SelectLevelController.difficult.DIFFICULT_MEDIUM:
+                    MainMenuManager.stats.mediumTotalMoves += gameManager.moves;
+                    MainMenuManager.stats.mediumTotalTime += gameManager.timer;
+                    break;
+                case SelectLevelController.difficult.DIFFICULT_HARD:
+                    MainMenuManager.stats.hardTotalMoves += gameManager.moves;
+                    MainMenuManager.stats.hardTotalTime += gameManager.timer;
+                    break;
+            }
+
             MainMenuManager.mainMenu.setActive(true);
         }
 	}

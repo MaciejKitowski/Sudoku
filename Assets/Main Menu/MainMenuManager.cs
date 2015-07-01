@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public static SelectLevelController selectLevelPanel;
     public static DebugAddingLevelsController addLevels;
     public static SettingsController settings;
+    public static StatisticsController stats;
 	
 	void Start () 
     {
@@ -18,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         selectLevelPanel = gameObject.transform.GetComponentInChildren<SelectLevelController>();
         addLevels = gameObject.transform.GetComponentInChildren<DebugAddingLevelsController>();
         settings = gameObject.transform.GetComponentInChildren<SettingsController>();
+        stats = gameObject.transform.GetComponentInChildren<StatisticsController>();
 
         mainMenu.setActive(true);
         exitPanel.setActive(false);
@@ -25,5 +27,6 @@ public class MainMenuManager : MonoBehaviour
         selectLevelPanel.setActive(false);
         addLevels.setActive(false);
         settings.setActive(false);
+        stats.setActive(false);
 	}
 }

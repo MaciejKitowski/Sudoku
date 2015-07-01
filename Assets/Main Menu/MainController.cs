@@ -56,6 +56,7 @@ public class MainController : MonoBehaviour
         {
             Debug.Log("Statistics button");
             gameManager.audio.play();
+            MainMenuManager.stats.setActive(true);
         }
     }
 
