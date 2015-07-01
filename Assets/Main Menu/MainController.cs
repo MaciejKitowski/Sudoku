@@ -82,4 +82,11 @@ public class MainController : MonoBehaviour
         MainMenuManager.addLevels.setActive(true);
         MainMenuManager.addLevels.reset();
     }
+
+    public void buttonSettings()
+    {
+        Debug.Log("Settings button");
+        gameManager.audio.play();
+        MainMenuManager.settings.setActive(true);
+    }
 }

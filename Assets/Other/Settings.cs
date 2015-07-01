@@ -6,6 +6,7 @@ public class Settings : MonoBehaviour
     public enum numpadPosition { POS_LEFT, POS_CENTER, POS_RIGHT, POS_DOWN_LEFT, POS_DOWN_CENTER, POS_DOWN_RIGHT }
     public static numpadPosition numpadPos;
     public static bool invertedNumpad;
+    public static bool soundMute;
 
 	void Awake () 
     {
@@ -24,6 +25,9 @@ public class Settings : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("invertedNum") == 1) invertedNumpad = true;
         else invertedNumpad = false;
+
+        if (PlayerPrefs.GetInt("soundMute") == 1) soundMute = true;
+        else soundMute = false;
 
         switch (PlayerPrefs.GetInt("NumpadPos"))
         {
@@ -52,6 +56,9 @@ public class Settings : MonoBehaviour
     {
         PlayerPrefs.SetInt("CheckPlayerPrefs", 1);
         if (invertedNumpad) PlayerPrefs.SetInt("invertedNum", 1);
+        else PlayerPrefs.SetInt("invertedNum", 0);
+
+        if (soundMute) PlayerPrefs.SetInt("invertedNum", 1);
         else PlayerPrefs.SetInt("invertedNum", 0);
 
         switch (numpadPos)

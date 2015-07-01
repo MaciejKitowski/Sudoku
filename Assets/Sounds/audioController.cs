@@ -17,18 +17,20 @@ public class audioController : MonoBehaviour
 
     public void play(soundType type = soundType.SOUND_BUTTONCLICK)
     {
-        switch(type)
+        if(!Settings.soundMute)
         {
-            case soundType.SOUND_BADSUDOKU:
-                audioSrc.PlayOneShot(badSudokuSound);
-                break;
-            case soundType.SOUND_GOODSUDOKU:
-                audioSrc.PlayOneShot(goodSudokuSound);
-                break;
-            case soundType.SOUND_BUTTONCLICK:
-                audioSrc.PlayOneShot(buttonClickSound);
-                break;
-
+            switch (type)
+            {
+                case soundType.SOUND_BADSUDOKU:
+                    audioSrc.PlayOneShot(badSudokuSound);
+                    break;
+                case soundType.SOUND_GOODSUDOKU:
+                    audioSrc.PlayOneShot(goodSudokuSound);
+                    break;
+                case soundType.SOUND_BUTTONCLICK:
+                    audioSrc.PlayOneShot(buttonClickSound);
+                    break;
+            }
         }
     }
 }
