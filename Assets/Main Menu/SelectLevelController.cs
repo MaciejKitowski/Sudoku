@@ -36,16 +36,20 @@ public class SelectLevelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) setActive(false);
 
         //Move between levels by touch
+    #if !UNITY_EDITOR
+
         if (Input.GetTouch(0).phase == TouchPhase.Began) touchBeginPosition = Input.GetTouch(0).position.x;
 
         if (Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             touchEndPosition = Input.GetTouch(0).position.x;
             touchDirection = touchEndPosition - touchBeginPosition;
-            if (touchDirection < 0F) buttonNextLevel(); //Right
-            if (touchDirection > 0F) buttonPreviousLevel(); //Left
+            if (touchDirection < -55F) buttonNextLevel(); //Right
+            if (touchDirection > 55F) buttonPreviousLevel(); //Left
         }
-	}
+
+    #endif
+    }
 
     private void updateLevel()
     {
@@ -82,6 +86,7 @@ public class SelectLevelController : MonoBehaviour
         {
             gameObject.SetActive(true);
             activeLevel = 0;
+            slider.value = 0;
             Difficult = Diff;
             active = true;
 

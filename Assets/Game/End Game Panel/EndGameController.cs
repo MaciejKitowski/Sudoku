@@ -41,8 +41,18 @@ public class EndGameController : MonoBehaviour
         minutes = Mathf.FloorToInt(lev.bestTime / 60F);
         seconds = Mathf.FloorToInt(lev.bestTime - minutes * 60);
 
-        timeValueLast.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        movesValueLast.text = lev.bestMoves.ToString();
+        if(!gameManager.randomGame)
+        {
+            timeValueLast.transform.parent.gameObject.SetActive(true);
+            movesValueLast.transform.parent.gameObject.SetActive(true);
+            timeValueLast.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            movesValueLast.text = lev.bestMoves.ToString();
+        }
+        else
+        {
+            timeValueLast.transform.parent.gameObject.SetActive(false);
+            movesValueLast.transform.parent.gameObject.SetActive(false);
+        }
     }
 
     public void buttonBackToMenu()

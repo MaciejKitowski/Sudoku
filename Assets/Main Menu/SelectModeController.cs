@@ -55,6 +55,7 @@ public class SelectModeController : MonoBehaviour
     {
         Debug.Log("Random Easy button");
         gameManager.audio.play();
+        gameManager.randomGame = true;
         gameManager.arena.resetAreaValues();
         gameManager.arena.setAreaValues(LevelManager.easyLevels[Random.Range(0,LevelManager.easyLevels.Count-1)]);
         gameManager.arena.setActive(true);
