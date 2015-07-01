@@ -10,12 +10,15 @@ public class Settings : MonoBehaviour
 
 	void Awake () 
     {
+    #if UNITY_EDITOR
         PlayerPrefs.DeleteAll();
+    #endif
 
         if (PlayerPrefs.HasKey("CheckPlayerPrefs")) loadFromPlayerPrefs();
         else
         {
             invertedNumpad = false;
+            soundMute = false;
             numpadPos = numpadPosition.POS_CENTER;
             saveToPlayerPrefs();
         }
@@ -58,8 +61,8 @@ public class Settings : MonoBehaviour
         if (invertedNumpad) PlayerPrefs.SetInt("invertedNum", 1);
         else PlayerPrefs.SetInt("invertedNum", 0);
 
-        if (soundMute) PlayerPrefs.SetInt("invertedNum", 1);
-        else PlayerPrefs.SetInt("invertedNum", 0);
+        if (soundMute) PlayerPrefs.SetInt("soundMute", 1);
+        else PlayerPrefs.SetInt("soundMute", 0);
 
         switch (numpadPos)
         {

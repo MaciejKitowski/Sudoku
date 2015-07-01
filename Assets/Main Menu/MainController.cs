@@ -87,6 +87,7 @@ public class MainController : MonoBehaviour
     {
         Debug.Log("Settings button");
         gameManager.audio.play();
+        MainMenuManager.settings.load();
         MainMenuManager.settings.setActive(true);
     }
 }
