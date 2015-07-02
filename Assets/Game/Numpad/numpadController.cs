@@ -25,27 +25,33 @@ public class numpadController : MonoBehaviour
         switch(Settings.numpadPos)
         {
             case Settings.numpadPosition.POS_LEFT:
-                gameObject.transform.position = new Vector3(-90F, 0F, 0F);
+                gameObject.transform.localPosition = new Vector3(-90F, 55F, 0F);
+                //gameObject.transform.position = new Vector3(-90F, 0F, 0F);
                 break;
 
             case Settings.numpadPosition.POS_CENTER:
-                gameObject.transform.position = new Vector3(0F, 0F, 0F);
+                gameObject.transform.localPosition = new Vector3(0F, 55F, 0F);
+                //gameObject.transform.position = new Vector3(0F, 0F, 0F);
                 break;
 
             case Settings.numpadPosition.POS_RIGHT:
-                gameObject.transform.position = new Vector3(90F, 0F, 0F);
+                gameObject.transform.localPosition = new Vector3(90F, 55F, 0F);
+                //gameObject.transform.position = new Vector3(90F, 0F, 0F);
                 break;
 
             case Settings.numpadPosition.POS_DOWN_LEFT:
-                gameObject.transform.position = new Vector3(-90F, -220F, 0F);
+                gameObject.transform.localPosition = new Vector3(-90F, -220F, 0F);
+                //gameObject.transform.position = new Vector3(-90F, -220F, 0F);
                 break;
 
             case Settings.numpadPosition.POS_DOWN_CENTER:
-                gameObject.transform.position = new Vector3(0F, -220F, 0F);
+                gameObject.transform.localPosition = new Vector3(0F, -220F, 0F);
+                //gameObject.transform.position = new Vector3(0F, -220F, 0F);
                 break;
 
             case Settings.numpadPosition.POS_DOWN_RIGHT:
-                gameObject.transform.position = new Vector3(90F, -220F, 0F);
+                gameObject.transform.localPosition = new Vector3(90F, -220F, 0F);
+                //gameObject.transform.position = new Vector3(90F, -220F, 0F);
                 break;
         }
     }
