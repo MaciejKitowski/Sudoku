@@ -7,7 +7,7 @@ public class MainController : MonoBehaviour
     
     void Update()
     {
-        if (!MainMenuManager.exitPanel.active && !MainMenuManager.selectModePanel.active && !MainMenuManager.selectLevelPanel.active)
+        if (!MainMenuManager.exitPanel.active && !MainMenuManager.selectModePanel.active && !MainMenuManager.selectLevelPanel.active && !MainMenuManager.stats.active)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {

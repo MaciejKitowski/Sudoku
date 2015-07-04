@@ -36,6 +36,11 @@ public class StatisticsController : MonoBehaviour
         else saveToPlayerPrefs();
 	}
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) setActive(false);
+    }
+
     public void setActive(bool state)
     {
         active = state;
