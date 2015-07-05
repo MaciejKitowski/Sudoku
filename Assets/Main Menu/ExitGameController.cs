@@ -17,6 +17,7 @@ public class ExitGameController : MonoBehaviour
             case true:
                 active = true;
                 LevelManager.Save();
+                MainMenuManager.stats.Save();
                 gameObject.SetActive(true);
                 break;
 

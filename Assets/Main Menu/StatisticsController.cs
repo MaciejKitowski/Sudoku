@@ -1,52 +1,52 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Xml;
 using System.Collections;
+using System.Xml.Serialization;
+
+public class Statistics
+{
+    public float time;
+    public int moves;
+    [XmlIgnore]
+    public Text timeTxt, movesTxt;
+    
+    public struct levelDetail
+    {
+        public float time;
+        public int moves, wins;
+        [XmlIgnore]
+        public Text timeTxt, winsTxt, movesTxt;
+    }
+    public levelDetail easy, medium, hard;
+}
 
 public class StatisticsController : MonoBehaviour 
 {
     public bool active;
-
-    public float time;
-    public int moves;
-    private Text timeTxt, movesTxt;
-
-    private struct levelDetail
-    {
-        public float time;
-        public int moves, wins;
-        public Text timeTxt, winsTxt, movesTxt;
-    }
-    private levelDetail easy, medium, hard;
-
-    /*public float easyTotalTime, mediumTotalTime, hardTotalTime;
-    public int easyTotalMoves, mediumTotalMoves, hardTotalMoves;
-    public int easyTotalWins, mediumTotalWins, hardTotalWins;*/
-
-    //private Text[] easyLevels, mediumLevels, hardLevels;
-	
+    private Statistics stats;
+    
 	void Awake () 
     {
-        /*easyLevels = new Text[3];
-        mediumLevels = new Text[3];
-        hardLevels = new Text[3];*/
+        stats = new Statistics();
 
-        timeTxt = gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
-        movesTxt = gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "Statistics.xml"))) Load();
 
-        easy.timeTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
-        easy.winsTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
-        easy.movesTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.timeTxt = gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.movesTxt = gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
 
-        medium.timeTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
-        medium.winsTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
-        medium.movesTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.easy.timeTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.easy.winsTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.easy.movesTxt = gameObject.transform.GetChild(3).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
 
-        hard.timeTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
-        hard.winsTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
-        hard.movesTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.medium.timeTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.medium.winsTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.medium.movesTxt = gameObject.transform.GetChild(4).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
 
-        if (PlayerPrefs.HasKey("CheckStatsPlayerPrefs")) loadFromPlayerPrefs();
-        else saveToPlayerPrefs();
+        stats.hard.timeTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.hard.winsTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Text>();
+        stats.hard.movesTxt = gameObject.transform.GetChild(5).gameObject.transform.GetChild(2).gameObject.transform.GetChild(0).GetComponent<Text>();
 	}
 
     void Update()
@@ -63,97 +63,62 @@ public class StatisticsController : MonoBehaviour
 
     public void updateStats(SelectLevelController.difficult Difficult, bool isWon = false)
     {
-        moves += gameManager.moves;
-        time += gameManager.timer;
+        stats.moves += gameManager.moves;
+        stats.time += gameManager.timer;
 
-        switch (Difficult)
-        {
-            case SelectLevelController.difficult.DIFFICULT_EASY:
-                easy.moves += gameManager.moves;
-                easy.time += gameManager.timer;
-                if (isWon) easy.wins++;
-                break;
-            case SelectLevelController.difficult.DIFFICULT_MEDIUM:
-                medium.moves += gameManager.moves;
-                medium.time += gameManager.timer;
-                if (isWon) medium.wins++;
-                break;
-            case SelectLevelController.difficult.DIFFICULT_HARD:
-                hard.moves += gameManager.moves;
-                hard.time += gameManager.timer;
-                if (isWon) hard.wins++;
-                break;
-        }
+        if (Difficult == SelectLevelController.difficult.DIFFICULT_EASY) updateValues(ref stats.easy, isWon);
+        else if (Difficult == SelectLevelController.difficult.DIFFICULT_MEDIUM) updateValues(ref stats.medium, isWon);
+        else if (Difficult == SelectLevelController.difficult.DIFFICULT_HARD) updateValues(ref stats.hard, isWon);
+    }
+
+    private void updateValues(ref Statistics.levelDetail level, bool isWon)
+    {
+        level.moves += gameManager.moves;
+        level.time += gameManager.timer;
+        if (isWon) level.wins++;
     }
 
     private void updateTxt()
     {
-        int minutes = Mathf.FloorToInt(time / 60F);
-        int seconds = Mathf.FloorToInt(time - minutes * 60);
-        timeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        movesTxt.text = moves.ToString();
+        stats.timeTxt.text = transformToTime(stats.time);
+        stats.movesTxt.text = stats.moves.ToString();
 
-        minutes = Mathf.FloorToInt(easy.time / 60F);
-        seconds = Mathf.FloorToInt(easy.time - minutes * 60);
-        easy.timeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        easy.winsTxt.text = easy.wins.ToString();
-        easy.movesTxt.text = easy.moves.ToString();
+        stats.easy.timeTxt.text = transformToTime(stats.easy.time);
+        stats.easy.winsTxt.text = stats.easy.wins.ToString();
+        stats.easy.movesTxt.text = stats.easy.moves.ToString();
 
-        minutes = Mathf.FloorToInt(medium.time / 60F);
-        seconds = Mathf.FloorToInt(medium.time - minutes * 60);
-        medium.timeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        medium.winsTxt.text = medium.wins.ToString();
-        medium.movesTxt.text = medium.moves.ToString();
+        stats.medium.timeTxt.text = transformToTime(stats.medium.time);
+        stats.medium.winsTxt.text = stats.medium.wins.ToString();
+        stats.medium.movesTxt.text = stats.medium.moves.ToString();
 
-        minutes = Mathf.FloorToInt(hard.time / 60F);
-        seconds = Mathf.FloorToInt(hard.time - minutes * 60);
-        hard.timeTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        hard.winsTxt.text = hard.wins.ToString();
-        hard.movesTxt.text = hard.moves.ToString();
+        stats.hard.timeTxt.text = transformToTime(stats.hard.time);
+        stats.hard.winsTxt.text = stats.hard.wins.ToString();
+        stats.hard.movesTxt.text = stats.hard.moves.ToString();
     }
 
     public void buttonBackToMenu()
     {
         Debug.Log("Back to menu button");
         gameManager.audio.play();
-        saveToPlayerPrefs();
         setActive(false);
     }
 
-    private void loadFromPlayerPrefs()
+    public void Save()
     {
-        time = PlayerPrefs.GetFloat("totalTime");
-        moves = PlayerPrefs.GetInt("totalMoves");
-
-        /*easyTotalTime = PlayerPrefs.GetFloat("easyTotalTime");
-        easyTotalMoves = PlayerPrefs.GetInt("easyTotalMoves");
-        easyTotalWins = PlayerPrefs.GetInt("easyTotalWins");
-
-        mediumTotalTime = PlayerPrefs.GetFloat("mediumTotalTime");
-        mediumTotalMoves = PlayerPrefs.GetInt("mediumTotalMoves");
-        mediumTotalWins = PlayerPrefs.GetInt("mediumTotalWins");
-
-        hardTotalTime = PlayerPrefs.GetFloat("hardTotalTime");
-        hardTotalMoves = PlayerPrefs.GetInt("hardTotalMoves");
-        hardTotalWins = PlayerPrefs.GetInt("hardTotalWins");*/
+        XmlSerializer serializer = new XmlSerializer(typeof(Statistics));
+        using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "Statistics.xml"), FileMode.Create)) serializer.Serialize(stream, stats);
     }
 
-    private void saveToPlayerPrefs()
+    private void Load()
     {
-        PlayerPrefs.SetString("CheckStatsPlayerPrefs", "Checked");
-        PlayerPrefs.SetFloat("totalTime", time);
-        PlayerPrefs.SetInt("totalMoves", moves);
+        XmlSerializer serializer = new XmlSerializer(typeof(Statistics));
+        using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "Statistics.xml"), FileMode.Open)) stats = serializer.Deserialize(stream) as Statistics;
+    }
 
-        /*PlayerPrefs.SetFloat("easyTotalTime", easyTotalTime);
-        PlayerPrefs.SetInt("easyTotalMoves", easyTotalMoves);
-        PlayerPrefs.SetInt("easyTotalWins", easyTotalWins);
-
-        PlayerPrefs.SetFloat("mediumTotalTime", mediumTotalTime);
-        PlayerPrefs.SetInt("mediumTotalMoves", mediumTotalMoves);
-        PlayerPrefs.SetInt("mediumTotalWins", mediumTotalWins);
-
-        PlayerPrefs.SetFloat("hardTotalTime", hardTotalTime);
-        PlayerPrefs.SetInt("hardTotalMoves", hardTotalMoves);
-        PlayerPrefs.SetInt("hardTotalWins", hardTotalWins);*/
+    private string transformToTime(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60F);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
