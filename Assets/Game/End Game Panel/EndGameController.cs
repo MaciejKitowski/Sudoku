@@ -58,32 +58,8 @@ public class EndGameController : MonoBehaviour
     public void buttonBackToMenu()
     {
         gameManager.audio.play();
-        MainMenuManager.stats.totalMoves += gameManager.moves;
-        MainMenuManager.stats.totalTime += gameManager.timer;
-
-        switch(MainMenuManager.selectLevelPanel.Difficult)
-        {
-            case SelectLevelController.difficult.DIFFICULT_EASY:
-                MainMenuManager.stats.easyTotalMoves += gameManager.moves;
-                MainMenuManager.stats.easyTotalTime += gameManager.timer;
-                if (!gameManager.randomGame) MainMenuManager.stats.easyTotalWins++;
-                break;
-            case SelectLevelController.difficult.DIFFICULT_MEDIUM:
-                MainMenuManager.stats.mediumTotalMoves += gameManager.moves;
-                MainMenuManager.stats.mediumTotalTime += gameManager.timer;
-                if (!gameManager.randomGame) MainMenuManager.stats.mediumTotalWins++;
-                break;
-            case SelectLevelController.difficult.DIFFICULT_HARD:
-                MainMenuManager.stats.hardTotalMoves += gameManager.moves;
-                MainMenuManager.stats.hardTotalTime += gameManager.timer;
-                if (!gameManager.randomGame) MainMenuManager.stats.hardTotalWins++;
-                break;
-        }
-
+        MainMenuManager.stats.updateStats(MainMenuManager.selectLevelPanel.Difficult, true);
         MainMenuManager.mainMenu.setActive(true);
         gameManager.arena.setActive(false);
     }
-
-
-
 }

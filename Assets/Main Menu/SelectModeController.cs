@@ -60,6 +60,7 @@ public class SelectModeController : MonoBehaviour
         gameManager.arena.setAreaValues(LevelManager.easyLevels[Random.Range(0,LevelManager.easyLevels.Count-1)]);
         gameManager.arena.setActive(true);
         MainMenuManager.mainMenu.setActive(false);
+        gameManager.endGamePanel.setActive(false);
         setActive(false);
     }
 
@@ -72,6 +73,7 @@ public class SelectModeController : MonoBehaviour
         gameManager.arena.setAreaValues(LevelManager.mediumLevels[Random.Range(0, LevelManager.mediumLevels.Count - 1)]);
         gameManager.arena.setActive(true);
         MainMenuManager.mainMenu.setActive(false);
+        gameManager.endGamePanel.setActive(false);
         setActive(false);
     }
 
@@ -84,6 +86,7 @@ public class SelectModeController : MonoBehaviour
         gameManager.arena.setAreaValues(LevelManager.hardLevels[Random.Range(0, LevelManager.hardLevels.Count - 1)]);
         gameManager.arena.setActive(true);
         MainMenuManager.mainMenu.setActive(false);
+        gameManager.endGamePanel.setActive(false);
         setActive(false);
     }
 }
