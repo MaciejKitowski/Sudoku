@@ -61,5 +61,8 @@ public class EndGameController : MonoBehaviour
         MainMenuManager.stats.updateStats(MainMenuManager.selectLevelPanel.Difficult, true);
         MainMenuManager.mainMenu.setActive(true);
         gameManager.arena.setActive(false);
+
+        if (gameManager.arena.getActiveLevel().bestMoves == 0 || gameManager.arena.getActiveLevel().bestMoves > gameManager.moves) gameManager.arena.getActiveLevel().bestMoves = gameManager.moves;
+        if (gameManager.arena.getActiveLevel().bestTime == 0 || gameManager.arena.getActiveLevel().bestTime > gameManager.timer) gameManager.arena.getActiveLevel().bestTime = gameManager.timer;
     }
 }
