@@ -26,16 +26,8 @@ public class DebugAddingLevelsController : MonoBehaviour
 
     public void setActive(bool state)
     {
-        if (state == true)
-        {
-            gameObject.SetActive(true);
-            active = true;
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            active = false;
-        }
+        gameObject.SetActive(state);
+        active = state;
     }
 
     public void reset()

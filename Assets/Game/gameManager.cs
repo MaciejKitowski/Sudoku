@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class gameManager : MonoBehaviour 
@@ -15,10 +16,13 @@ public class gameManager : MonoBehaviour
     public static bool countTime;
 
     public static audioController audio;
+
+    private static Text timerTxt;
+    private static Text movesTxt;
     
 	void Awake()
     {
-        timer = 0.0f;
+        timer = 0F;
         moves = 0;
 
         numpad = FindObjectOfType<numpadController>();
@@ -27,6 +31,9 @@ public class gameManager : MonoBehaviour
         endGamePanel = FindObjectOfType<EndGameController>();
         audio = FindObjectOfType<audioController>();
 
+        timerTxt = GameObject.FindGameObjectWithTag("Timer display").gameObject.GetComponent<Text>();
+        movesTxt = GameObject.FindGameObjectWithTag("Moves display").gameObject.GetComponent<Text>();
+        
         numpad.gameObject.SetActive(false);
         endGamePanel.setActive(false);
         checkButton.deactivate();
@@ -36,7 +43,12 @@ public class gameManager : MonoBehaviour
 	
 	void Update () 
     {
-        if (countTime)timer += Time.deltaTime;
+        if (countTime)
+        {
+            timer += Time.deltaTime;
+            timerTxt.text = transformToTime(timer);
+            movesTxt.text = moves.ToString();
+        }
 
         if (arena.checkEmpty()) checkButton.activate();
         else checkButton.deactivate();
@@ -48,6 +60,14 @@ public class gameManager : MonoBehaviour
             MainMenuManager.mainMenu.setActive(true);
         }
 	}
+
+    public static string transformToTime(float time = 0)
+    {
+        if (time == 0) time = timer;
+        int minutes = Mathf.FloorToInt(time / 60F);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
     public static void resetTimer()
     {

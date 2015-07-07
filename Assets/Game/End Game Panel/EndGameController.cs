@@ -32,20 +32,14 @@ public class EndGameController : MonoBehaviour
         gameManager.countTime = false;
         activeLevel = lev;
 
-        int minutes = Mathf.FloorToInt(gameManager.timer / 60F);
-        int seconds = Mathf.FloorToInt(gameManager.timer - minutes * 60);
-
-        timeValue.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeValue.text = gameManager.transformToTime();
         movesValue.text = gameManager.moves.ToString();
-
-        minutes = Mathf.FloorToInt(lev.bestTime / 60F);
-        seconds = Mathf.FloorToInt(lev.bestTime - minutes * 60);
 
         if(!gameManager.randomGame)
         {
             timeValueLast.transform.parent.gameObject.SetActive(true);
             movesValueLast.transform.parent.gameObject.SetActive(true);
-            timeValueLast.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            timeValueLast.text = gameManager.transformToTime(lev.bestTime);
             movesValueLast.text = lev.bestMoves.ToString();
         }
         else
@@ -58,11 +52,13 @@ public class EndGameController : MonoBehaviour
     public void buttonBackToMenu()
     {
         gameManager.audio.play();
+        if (activeLevel.bestMoves == 0 || activeLevel.bestMoves > gameManager.moves) activeLevel.bestMoves = gameManager.moves;
+        if (activeLevel.bestTime == 0 || activeLevel.bestTime > gameManager.timer) activeLevel.bestTime = gameManager.timer;
         MainMenuManager.stats.updateStats(MainMenuManager.selectLevelPanel.Difficult, true);
         MainMenuManager.mainMenu.setActive(true);
         gameManager.arena.setActive(false);
-
-        if (gameManager.arena.getActiveLevel().bestMoves == 0 || gameManager.arena.getActiveLevel().bestMoves > gameManager.moves) gameManager.arena.getActiveLevel().bestMoves = gameManager.moves;
-        if (gameManager.arena.getActiveLevel().bestTime == 0 || gameManager.arena.getActiveLevel().bestTime > gameManager.timer) gameManager.arena.getActiveLevel().bestTime = gameManager.timer;
+        gameManager.arena.resetAreaValues();
+        gameManager.numpad.hide();
+        setActive(false);
     }
 }

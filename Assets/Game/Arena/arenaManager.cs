@@ -70,15 +70,7 @@ public class arenaManager : MonoBehaviour
 
     public void setActive(bool state)
     {
-        switch(state)
-        {
-            case true:
-                gameObject.transform.parent.gameObject.SetActive(true);
-                break;
-            case false:
-                gameObject.transform.parent.gameObject.SetActive(false);
-                break;
-        }
+        gameObject.SetActive(state);
     }
 
     public bool checkHorizontal()

@@ -80,18 +80,18 @@ public class StatisticsController : MonoBehaviour
 
     private void updateTxt()
     {
-        stats.timeTxt.text = transformToTime(stats.time);
+        stats.timeTxt.text = gameManager.transformToTime(stats.time);
         stats.movesTxt.text = stats.moves.ToString();
 
-        stats.easy.timeTxt.text = transformToTime(stats.easy.time);
+        stats.easy.timeTxt.text = gameManager.transformToTime(stats.easy.time);
         stats.easy.winsTxt.text = stats.easy.wins.ToString();
         stats.easy.movesTxt.text = stats.easy.moves.ToString();
 
-        stats.medium.timeTxt.text = transformToTime(stats.medium.time);
+        stats.medium.timeTxt.text = gameManager.transformToTime(stats.medium.time);
         stats.medium.winsTxt.text = stats.medium.wins.ToString();
         stats.medium.movesTxt.text = stats.medium.moves.ToString();
 
-        stats.hard.timeTxt.text = transformToTime(stats.hard.time);
+        stats.hard.timeTxt.text = gameManager.transformToTime(stats.hard.time);
         stats.hard.winsTxt.text = stats.hard.wins.ToString();
         stats.hard.movesTxt.text = stats.hard.moves.ToString();
     }
@@ -113,12 +113,5 @@ public class StatisticsController : MonoBehaviour
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Statistics));
         using (FileStream stream = new FileStream(Path.Combine(Application.persistentDataPath, "Statistics.xml"), FileMode.Open)) stats = serializer.Deserialize(stream) as Statistics;
-    }
-
-    private string transformToTime(float time)
-    {
-        int minutes = Mathf.FloorToInt(time / 60F);
-        int seconds = Mathf.FloorToInt(time - minutes * 60);
-        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
