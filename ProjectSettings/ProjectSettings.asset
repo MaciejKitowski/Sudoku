@@ -737,7 +737,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: e726837d-615a-4ed5-97c1-b37b4084ee16
   projectName: Sudoku
   organizationId: horunkan
