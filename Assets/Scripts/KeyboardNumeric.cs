@@ -5,10 +5,18 @@ using UnityEngine;
 public class KeyboardNumeric : MonoBehaviour {
     private BoardTile activeTile = null;
 
+    private void Start() {
+        BoardTile.TilePressed += Display;
+
+        Hide();
+    }
+
     public void Display(BoardTile pressedTile) {
-        Debug.Log("Display keyboard with selected tile", pressedTile);
-        gameObject.SetActive(true);
-        activeTile = pressedTile;
+        if(!gameObject.activeInHierarchy) {
+            Debug.Log("Display keyboard with tile", pressedTile);
+            gameObject.SetActive(true);
+            activeTile = pressedTile;
+        }
     }
 
     public void Hide() {

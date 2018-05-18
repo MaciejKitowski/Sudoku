@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardTile : MonoBehaviour {
+    public delegate void TilePressedDelegate(BoardTile sender);
+    public static event TilePressedDelegate TilePressed;
+
     [SerializeField] private Text valueField;
 
     private int value = 0;
@@ -19,6 +22,9 @@ public class BoardTile : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        Value++;
+        Debug.Log("Tile pressed", gameObject);
+
+        if (TilePressed == null) Debug.LogWarning("TilePressed event is empty", gameObject);
+        else TilePressed(this);
     }
 }
