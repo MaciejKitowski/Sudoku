@@ -16,6 +16,43 @@ public class Board : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.Space)) CheckBoard();
 	}
+
+    public void CheckBoard() {
+        if (!CheckRows()) return;
+        //if (!CheckCols()) return;
+
+        //foreach(var group in tileGroups) {
+        //    if (!group.CheckGroup()) return;
+        //}
+
+        Debug.LogWarning("Sudoku correct!");
+    }
+
+    private bool CheckRows() {
+        int currentY = 1;
+
+        for(int y = 0; y < 3; ++y) {
+            for (int i = 0; i < 3; ++i, ++currentY) {
+                int sum = 0;
+
+                for (int x = 0; x < 3; ++x) {
+                    var group = tileGroups[x, y];
+                    sum += group.SumRow(i);
+                }
+
+                if (sum != 45) {
+                    Debug.Log($"Incorrect row on y={currentY}");
+                    return false;
+                }
+            }            
+        }
+
+        return true;
+    }
+
+    private bool CheckCols() {
+        return false;
+    }
 }
