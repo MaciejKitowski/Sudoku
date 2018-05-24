@@ -3365,6 +3365,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 837167490}
+  - component: {fileID: 837167491}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -3394,6 +3395,17 @@ Transform:
   m_Father: {fileID: 1031142598}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &837167491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 837167489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdaae0370119b04da453b804b39b602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &875944500
 Prefab:
   m_ObjectHideFlags: 0
