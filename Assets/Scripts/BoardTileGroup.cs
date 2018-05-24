@@ -13,9 +13,17 @@ public class BoardTileGroup : MonoBehaviour {
             tiles[x, y] = tile.GetComponent<BoardTile>();
         }		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public bool CheckTiles() {
+        int sum = 0;
+
+        foreach(var tile in tiles) {
+            var val = tile.Value;
+
+            if (val == 0) return false;
+            else sum += val;
+        }
+
+        return sum == 45;
+    }
 }
