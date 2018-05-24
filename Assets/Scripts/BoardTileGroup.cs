@@ -14,7 +14,7 @@ public class BoardTileGroup : MonoBehaviour {
         }		
 	}
 
-    public bool CheckTiles() {
+    public bool CheckGroup() {
         int sum = 0;
 
         foreach(var tile in tiles) {
@@ -25,5 +25,17 @@ public class BoardTileGroup : MonoBehaviour {
         }
 
         return sum == 45;
+    }
+
+    public int SumRow(int y) {
+        int sum = 0;
+        for (int x = 0; x < 3; ++x) sum += tiles[x, y].Value;
+        return sum;
+    }
+
+    public int SumCol(int x) {
+        int sum = 0;
+        for (int y = 0; y < 3; ++y) sum += tiles[x, y].Value;
+        return sum;
     }
 }
