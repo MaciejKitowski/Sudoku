@@ -87,13 +87,29 @@ public class Board : MonoBehaviour {
     }
 
     private bool CheckBoxes() {
-        for (int y = 0; y < 3; ++y) {
-            for (int x = 0; x < 3; ++x) {
-
-                if(!tileGroups[x, y].CheckGroup()) {
-                    Debug.Log($"Incorrect tile box [{x}, {y}]", tileGroups[x, y]);
+        for(int y = 0; y < 3; ++y) {
+            for(int x = 0; x < 3; ++x) {
+                if(!CheckSingleBox(x, y)) {
+                    Debug.Log($"Incorrect box: [{x}, {y}]");
                     return false;
                 }
+            }
+        }
+
+        return true;
+    }
+
+    private bool CheckSingleBox(int boxX, int boxY) {
+        var hash = new HashSet<int>();
+        int startX = boxX * 3;
+        int startY = boxY * 3;
+
+        for(int y = startY; y < startY + 3; ++y) {
+            for(int x = startX; x < startX + 3; ++x) {
+                int value = tiles[x, y].Value;
+
+                if (value == 0 || hash.Contains(value)) return false;
+                else hash.Add(value);
             }
         }
 
