@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
+    [System.Obsolete]
     private BoardTileGroup[,] tileGroups = new BoardTileGroup[3, 3];
+
+    private BoardTile[,] tiles = new BoardTile[9, 9];
 
 	void Start () {
         foreach (Transform tile in transform) {
@@ -11,6 +14,23 @@ public class Board : MonoBehaviour {
             int y = (int)char.GetNumericValue(tile.name[2]);
 
             tileGroups[x, y] = tile.GetComponent<BoardTileGroup>();
+        }
+
+        foreach(Transform group in transform) {
+            int groupX = (int)char.GetNumericValue(group.name[0]);
+            int groupY = (int)char.GetNumericValue(group.name[2]);
+
+            foreach(Transform tile in group) {
+                int tileX = (int)char.GetNumericValue(tile.name[0]);
+                int tileY = (int)char.GetNumericValue(tile.name[2]);
+
+                int x = (groupX * 3) + tileX;
+                int y = (groupY * 3) + tileY;
+
+                tiles[x, y] = tile.GetComponent<BoardTile>();
+
+                Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
+            }
         }
     }
 	
