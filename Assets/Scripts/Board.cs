@@ -3,19 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
-    [System.Obsolete]
-    private BoardTileGroup[,] tileGroups = new BoardTileGroup[3, 3];
-
     private BoardTile[,] tiles = new BoardTile[9, 9];
 
 	void Start () {
-        foreach (Transform tile in transform) {
-            int x = (int)char.GetNumericValue(tile.name[0]);
-            int y = (int)char.GetNumericValue(tile.name[2]);
-
-            tileGroups[x, y] = tile.GetComponent<BoardTileGroup>();
-        }
-
         foreach(Transform group in transform) {
             int groupX = (int)char.GetNumericValue(group.name[0]);
             int groupY = (int)char.GetNumericValue(group.name[2]);
