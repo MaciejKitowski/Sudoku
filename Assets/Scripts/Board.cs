@@ -21,16 +21,13 @@ public class Board : MonoBehaviour {
     public void CheckBoard() {
         if (!CheckRows()) return;
         if (!CheckCols()) return;
-
-        foreach (var group in tileGroups) {
-            if (!group.CheckGroup()) return;
-        }
-
+        if (!CheckGroups()) return;
+        
         Debug.LogWarning("Sudoku correct!");
     }
 
     private bool CheckRows() {
-        int currentY = 1;
+        int currentY = 0;
 
         for(int y = 0; y < 3; ++y) {
             for (int i = 0; i < 3; ++i, ++currentY) {
@@ -52,7 +49,7 @@ public class Board : MonoBehaviour {
     }
 
     private bool CheckCols() {
-        int currentX = 1;
+        int currentX = 0;
 
         for (int x = 0; x < 3; ++x) {
             for (int i = 0; i < 3; ++i, ++currentX) {
@@ -65,6 +62,20 @@ public class Board : MonoBehaviour {
 
                 if (sum != 45) {
                     Debug.Log($"Incorrect row on x={currentX}");
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private bool CheckGroups() {
+        for (int y = 0; y < 3; ++y) {
+            for (int x = 0; x < 3; ++x) {
+
+                if(!tileGroups[x, y].CheckGroup()) {
+                    Debug.Log($"Incorrect tile group [{x}, {y}]", tileGroups[x, y]);
                     return false;
                 }
             }
