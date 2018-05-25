@@ -15,6 +15,22 @@ public class KeyboardNumeric : MonoBehaviour {
         Hide();
     }
 
+    //D E B U G
+    private void Update() {
+        if(gameObject.activeInHierarchy) {
+            if (Input.GetKeyDown(KeyCode.Keypad0)) ClearButtonPressed();
+            if (Input.GetKeyDown(KeyCode.Keypad1)) NumericButtonPressed(1);
+            if (Input.GetKeyDown(KeyCode.Keypad2)) NumericButtonPressed(2);
+            if (Input.GetKeyDown(KeyCode.Keypad3)) NumericButtonPressed(3);
+            if (Input.GetKeyDown(KeyCode.Keypad4)) NumericButtonPressed(4);
+            if (Input.GetKeyDown(KeyCode.Keypad5)) NumericButtonPressed(5);
+            if (Input.GetKeyDown(KeyCode.Keypad6)) NumericButtonPressed(6);
+            if (Input.GetKeyDown(KeyCode.Keypad7)) NumericButtonPressed(7);
+            if (Input.GetKeyDown(KeyCode.Keypad8)) NumericButtonPressed(8);
+            if (Input.GetKeyDown(KeyCode.Keypad9)) NumericButtonPressed(9);
+        }
+    }
+
     public void Display(BoardTile pressedTile) {
         if (!gameObject.activeInHierarchy) {
             Debug.Log("Display keyboard with tile", pressedTile);
