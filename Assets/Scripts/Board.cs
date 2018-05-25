@@ -40,8 +40,8 @@ public class Board : MonoBehaviour {
 
     public void CheckBoard() {
         if (!CheckRows()) return;
-        if (!CheckCols()) return;
-        if (!CheckGroups()) return;
+        if (!CheckColumns()) return;
+        if (!CheckBoxes()) return;
         
         Debug.LogWarning("Sudoku correct!");
     }
@@ -68,7 +68,7 @@ public class Board : MonoBehaviour {
         return true;
     }
 
-    private bool CheckCols() {
+    private bool CheckColumns() {
         int currentX = 0;
 
         for (int x = 0; x < 3; ++x) {
@@ -90,12 +90,12 @@ public class Board : MonoBehaviour {
         return true;
     }
 
-    private bool CheckGroups() {
+    private bool CheckBoxes() {
         for (int y = 0; y < 3; ++y) {
             for (int x = 0; x < 3; ++x) {
 
                 if(!tileGroups[x, y].CheckGroup()) {
-                    Debug.Log($"Incorrect tile group [{x}, {y}]", tileGroups[x, y]);
+                    Debug.Log($"Incorrect tile box [{x}, {y}]", tileGroups[x, y]);
                     return false;
                 }
             }
