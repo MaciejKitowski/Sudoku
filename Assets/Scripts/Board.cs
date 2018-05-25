@@ -67,22 +67,20 @@ public class Board : MonoBehaviour {
     }
 
     private bool CheckColumns() {
-        int currentX = 0;
+        var hash = new HashSet<int>();
 
-        for (int x = 0; x < 3; ++x) {
-            for (int i = 0; i < 3; ++i, ++currentX) {
-                int sum = 0;
+        for (int x = 0; x < 9; ++x) {
+            for (int y = 0; y < 9; ++y) {
+                int value = tiles[x, y].Value;
 
-                for (int y = 0; y < 3; ++y) {
-                    var group = tileGroups[x, y];
-                    sum += group.SumCol(i);
-                }
-
-                if (sum != 45) {
-                    Debug.Log($"Incorrect row on x={currentX}");
+                if (value == 0 || hash.Contains(value)) {
+                    Debug.Log($"Incorrect column: {x}");
                     return false;
                 }
+                else hash.Add(value);
             }
+
+            hash.Clear();
         }
 
         return true;
