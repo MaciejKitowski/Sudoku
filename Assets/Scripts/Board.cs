@@ -47,21 +47,17 @@ public class Board : MonoBehaviour {
     }
 
     private bool CheckRows() {
-        int currentY = 0;
+        for(int y = 0; y < 9; ++y) {
+            int sum = 0;
 
-        for(int y = 0; y < 3; ++y) {
-            for (int i = 0; i < 3; ++i, ++currentY) {
-                int sum = 0;
+            for (int x = 0; x < 9; ++x) {
+                if (tiles[x, y].Value == 0) break;
+                else sum += tiles[x, y].Value;
+            }
 
-                for (int x = 0; x < 3; ++x) {
-                    var group = tileGroups[x, y];
-                    sum += group.SumRow(i);
-                }
-
-                if (sum != 45) {
-                    Debug.Log($"Incorrect row on y={currentY}");
-                    return false;
-                }
+            if(sum != 45) {
+                Debug.Log($"Incorrect row: {y}");
+                return false;
             }
         }
 
