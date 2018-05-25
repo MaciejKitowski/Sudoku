@@ -47,18 +47,20 @@ public class Board : MonoBehaviour {
     }
 
     private bool CheckRows() {
-        for(int y = 0; y < 9; ++y) {
-            int sum = 0;
+        var hash = new HashSet<int>();
 
+        for (int y = 0; y < 9; ++y) {
             for (int x = 0; x < 9; ++x) {
-                if (tiles[x, y].Value == 0) break;
-                else sum += tiles[x, y].Value;
+                int value = tiles[x, y].Value;
+
+                if (value == 0 || hash.Contains(value)) {
+                    Debug.Log($"Incorrect row: {y}");
+                    return false;
+                }
+                else hash.Add(value);
             }
 
-            if(sum != 45) {
-                Debug.Log($"Incorrect row: {y}");
-                return false;
-            }
+            hash.Clear();
         }
 
         return true;
