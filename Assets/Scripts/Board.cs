@@ -18,8 +18,7 @@ public class Board : MonoBehaviour {
                 int y = (groupY * 3) + tileY;
 
                 tiles[x, y] = tile.GetComponent<BoardTile>();
-
-                Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
+                //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
             }
         }
     }
