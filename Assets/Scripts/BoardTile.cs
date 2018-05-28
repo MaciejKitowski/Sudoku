@@ -7,9 +7,11 @@ public class BoardTile : MonoBehaviour {
     public delegate void TilePressedDelegate(BoardTile sender);
     public static event TilePressedDelegate TilePressed;
 
-    [SerializeField] private bool constant = false;
+    private static readonly Color constantBackground = Color.gray;
+
     [SerializeField] private Text valueField;
 
+    private bool constant = false;
     private int value = 0;
 
     public int Value {
@@ -27,6 +29,7 @@ public class BoardTile : MonoBehaviour {
         else {
             Value = value;
             constant = true;
+            GetComponent<SpriteRenderer>().color = constantBackground;
         }
     }
 

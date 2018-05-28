@@ -15,7 +15,7 @@ public class KeyboardNumeric : MonoBehaviour {
         Hide();
     }
 
-    //D E B U G
+    //DEBUG
     private void Update() {
         if(gameObject.activeInHierarchy) {
             if (Input.GetKeyDown(KeyCode.Keypad0)) ClearButtonPressed();

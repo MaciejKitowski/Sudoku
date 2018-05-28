@@ -23,9 +23,11 @@ public class Board : MonoBehaviour {
             }
         }
     }
-	
-	void Update () {
+
+    //DEBUG
+    void Update () {
         if (Input.GetKeyDown(KeyCode.Space)) CheckBoard();
+        if (Input.GetKeyDown(KeyCode.T)) tiles[Random.Range(0, 9), Random.Range(0, 9)].SetConstantValue(Random.Range(1, 10));
 	}
 
     public void CheckBoard() {
