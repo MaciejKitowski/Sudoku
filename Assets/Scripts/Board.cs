@@ -29,6 +29,16 @@ public class Board : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.T)) tiles[Random.Range(0, 9), Random.Range(0, 9)].SetConstantValue(Random.Range(1, 10));
 	}
 
+    public void SetLevel(Level level) {
+        for(int y = 0; y < 9; ++y) {
+            for(int x = 0; x < 9; ++x) {
+                if (level.Display[x, y]) {
+                    tiles[x, y].SetConstantValue(level.Board[x, y]);
+                }
+            }
+        }
+    }
+
     public void CheckBoard() {
         if (!CheckRows()) return;
         if (!CheckColumns()) return;

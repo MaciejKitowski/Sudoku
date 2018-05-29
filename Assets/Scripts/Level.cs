@@ -9,6 +9,9 @@ public class Level {
     private bool[,] display = new bool[9, 9];
     private List<LevelMatchHistory> history = new List<LevelMatchHistory>();
 
+    public int[,] Board { get { return board; } }
+    public bool[,] Display { get { return display; } }
+
     public Level(JSONNode node) {
         Debug.Log($"Deserialize level from json: {node.ToString()}");
         DeserializeBoard(node);
