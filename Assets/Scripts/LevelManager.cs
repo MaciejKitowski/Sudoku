@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Threading.Tasks;
+using SimpleJSON;
 
 public class LevelManager : MonoBehaviour {
     private List<Level> easy = new List<Level>();
@@ -28,8 +28,8 @@ public class LevelManager : MonoBehaviour {
             Debug.Log("Start deserializing levels");
 
             DeserializeDifficult("Easy", easy);
-            DeserializeDifficult("Medium", medium);
-            DeserializeDifficult("Hard", hard);
+            //DeserializeDifficult("Medium", medium);
+            //DeserializeDifficult("Hard", hard);
 
             Debug.Log($"Deserialized levels finished, found levels: Easy:{easy.Count}, Medium:{medium.Count}, Hard:{hard.Count}");
         }
@@ -47,6 +47,8 @@ public class LevelManager : MonoBehaviour {
 
         foreach (string file in files) {
             Debug.Log($"Load level from file: {file}");
+
+            list.Add(new Level(JSON.Parse(File.ReadAllText(file))));
         }
     }
 
