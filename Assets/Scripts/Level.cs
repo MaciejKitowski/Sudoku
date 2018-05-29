@@ -13,6 +13,6 @@ public class LevelMatchHistory {
     private bool wasWon = false;
     private bool finished = true;
     private int moves = 0;
-    DateTimeOffset startDate = new DateTimeOffset();
-    int elapsedSeconds = 0;
+    private DateTimeOffset startDate = new DateTimeOffset();
+    private int elapsedSeconds = 0;
 }
