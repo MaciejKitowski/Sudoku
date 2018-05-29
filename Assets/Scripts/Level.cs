@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using SimpleJSON;
+using System.Globalization;
 
 public class Level {
     private int[,] board = new int[9, 9];
@@ -58,26 +59,10 @@ public class LevelMatchHistory {
     public LevelMatchHistory(JSONNode node) {
         Debug.Log($"Deserialize level match history from json: {node.ToString()}");
 
-        won = node["won"];
-        finished = node["finished"];
-        moves = node["moves"];
+        won = node["won"].AsBool;
+        finished = node["finished"].AsBool;
+        moves = node["moves"].AsInt;
+        startDate = DateTime.ParseExact(node["date"], "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
         elapsedSeconds = node["elapsedSeconds"];
-
-        DeserializeStartDate(node);
-    }
-
-    private void DeserializeStartDate(JSONNode node) {
-        string raw = node["date"];
-        var splitted = raw.Split(' ', '-', ':');
-
-        int year, month, day, hour, minutes;
-        if (!int.TryParse(splitted[0], out year)) Debug.LogWarning($"Failed to parse year: {splitted[0]}");
-        if (!int.TryParse(splitted[1], out month)) Debug.LogWarning($"Failed to parse month: {splitted[1]}");
-        if (!int.TryParse(splitted[2], out day)) Debug.LogWarning($"Failed to parse day: {splitted[2]}");
-        if (!int.TryParse(splitted[3], out hour)) Debug.LogWarning($"Failed to parse hour: {splitted[3]}");
-        if (!int.TryParse(splitted[4], out minutes)) Debug.LogWarning($"Failed to parse minutes: {splitted[4]}");
-
-        startDate = new DateTime(year, month, day, hour, minutes, 0);
-        Debug.Log($"Parsed date: {startDate.ToString()}");
     }
 }
