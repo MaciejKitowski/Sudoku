@@ -11,13 +11,13 @@ public class Level {
 
     public Level(JSONNode node) {
         Debug.Log($"Deserialize level from json: {node.ToString()}");
-        LoadBoard(node);
-        LoadDisplay(node);
+        DeserializeBoard(node);
+        DeserializeDisplay(node);
 
         Debug.Log("Deserialization finished");
     }
 
-    private void LoadBoard(JSONNode node) {
+    private void DeserializeBoard(JSONNode node) {
         for (int y = 0; y < 9; ++y) {
             for (int x = 0; x < 9; ++x) {
                 board[x, y] = node["board"][y][x].AsInt;
@@ -25,7 +25,7 @@ public class Level {
         }
     }
 
-    private void LoadDisplay(JSONNode node) {
+    private void DeserializeDisplay(JSONNode node) {
         for (int y = 0; y < 9; ++y) {
             for (int x = 0; x < 9; ++x) {
                 display[x, y] = (node["display"][y][x].AsInt == 1);
