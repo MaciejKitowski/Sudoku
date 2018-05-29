@@ -20,5 +20,21 @@
 		[1,0,1,1,0,1,1,0,1],
 		[1,0,1,1,0,1,1,0,1],
 		[1,0,1,1,0,1,1,0,1],
+	],
+	"MatchHistory": [
+		{
+			"finished": true,
+			"won": true,
+			"moves": 15,
+			"date": "2018-01-15 14:12",
+			"elapsedSeconds": 9012
+		},
+		{
+			"finished": true,
+			"won": false,
+			"moves": 742,
+			"date": "2018-01-14 18:44",
+			"elapsedSeconds": 102063
+		}
 	]
 }
