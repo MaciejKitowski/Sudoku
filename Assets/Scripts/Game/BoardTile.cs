@@ -24,7 +24,9 @@ public class BoardTile : MonoBehaviour {
 
             if (value != 0) {
                 valueField.text = $"{value}";
-                ValueChanged();
+
+                if (ValueChanged == null) Debug.LogWarning("ValueChanged event is empty", gameObject);
+                else ValueChanged();
             }
             else valueField.text = "";
         }
