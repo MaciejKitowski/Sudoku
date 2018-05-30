@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour {
     private List<Level> medium = new List<Level>();
     private List<Level> hard = new List<Level>();
 
+    public Level SelectedLevel { get; private set; } = null;
+
     private string path = null;
 
     private void Awake() {

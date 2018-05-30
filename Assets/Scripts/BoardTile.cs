@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardTile : MonoBehaviour {
+    private static readonly Color constantBackground = Color.gray;
+
     public delegate void TilePressedDelegate(BoardTile sender);
     public delegate void ValueChangedDelegate();
 
     public event TilePressedDelegate TilePressed;
     public event ValueChangedDelegate ValueChanged;
-
-    private static readonly Color constantBackground = Color.gray;
 
     [SerializeField] private Text valueField;
 
