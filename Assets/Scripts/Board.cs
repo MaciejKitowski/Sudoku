@@ -41,6 +41,7 @@ public class Board : MonoBehaviour {
 
                 tiles[x, y] = tile.GetComponent<BoardTile>();
                 tiles[x, y].TilePressed += keyboard.Display;
+                tiles[x, y].ValueChanged += CheckBoard;
                 //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
             }
         }
