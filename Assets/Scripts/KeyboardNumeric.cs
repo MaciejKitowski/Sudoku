@@ -6,14 +6,7 @@ using UnityEngine;
 
 public class KeyboardNumeric : MonoBehaviour {
     private BoardTile activeTile = null;
-
-    bool readyToPress = false;
-
-    private void Start() {
-        BoardTile.TilePressed += Display;
-
-        Hide();
-    }
+    private bool readyToPress = false;
 
     //DEBUG
     private void Update() {

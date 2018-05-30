@@ -3,24 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
+    [SerializeField] private KeyboardNumeric keyboard = null;
+
     private BoardTile[,] tiles = new BoardTile[9, 9];
 
 	void Start () {
-        foreach(Transform group in transform) {
-            int groupX = (int)char.GetNumericValue(group.name[0]);
-            int groupY = (int)char.GetNumericValue(group.name[2]);
-
-            foreach(Transform tile in group) {
-                int tileX = (int)char.GetNumericValue(tile.name[0]);
-                int tileY = (int)char.GetNumericValue(tile.name[2]);
-
-                int x = (groupX * 3) + tileX;
-                int y = (groupY * 3) + tileY;
-
-                tiles[x, y] = tile.GetComponent<BoardTile>();
-                //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
-            }
-        }
+        LoadTilesToArray();
     }
 
     //DEBUG
@@ -45,6 +33,25 @@ public class Board : MonoBehaviour {
         if (!CheckBoxes()) return;
         
         Debug.LogWarning("Sudoku correct!");
+    }
+
+    private void LoadTilesToArray() {
+        foreach (Transform group in transform) {
+            int groupX = (int)char.GetNumericValue(group.name[0]);
+            int groupY = (int)char.GetNumericValue(group.name[2]);
+
+            foreach (Transform tile in group) {
+                int tileX = (int)char.GetNumericValue(tile.name[0]);
+                int tileY = (int)char.GetNumericValue(tile.name[2]);
+
+                int x = (groupX * 3) + tileX;
+                int y = (groupY * 3) + tileY;
+
+                tiles[x, y] = tile.GetComponent<BoardTile>();
+                tiles[x, y].TilePressed += keyboard.Display;
+                //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
+            }
+        }
     }
 
     private bool CheckRows() {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BoardTile : MonoBehaviour {
     public delegate void TilePressedDelegate(BoardTile sender);
-    public static event TilePressedDelegate TilePressed;
+    public event TilePressedDelegate TilePressed;
 
     private static readonly Color constantBackground = Color.gray;
 
