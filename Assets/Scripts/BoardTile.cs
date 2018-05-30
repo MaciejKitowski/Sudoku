@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class BoardTile : MonoBehaviour {
     public delegate void TilePressedDelegate(BoardTile sender);
+    public delegate void ValueChangedDelegate();
+
     public event TilePressedDelegate TilePressed;
+    public event ValueChangedDelegate ValueChanged;
 
     private static readonly Color constantBackground = Color.gray;
 
@@ -19,7 +22,10 @@ public class BoardTile : MonoBehaviour {
         set {
             this.value = value;
 
-            if (value != 0) valueField.text = $"{value}";
+            if (value != 0) {
+                valueField.text = $"{value}";
+                ValueChanged();
+            }
             else valueField.text = "";
         }
     }

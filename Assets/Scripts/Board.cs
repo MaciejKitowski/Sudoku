@@ -27,14 +27,6 @@ public class Board : MonoBehaviour {
         }
     }
 
-    public void CheckBoard() {
-        if (!CheckRows()) return;
-        if (!CheckColumns()) return;
-        if (!CheckBoxes()) return;
-        
-        Debug.LogWarning("Sudoku correct!");
-    }
-
     private void LoadTilesToArray() {
         foreach (Transform group in transform) {
             int groupX = (int)char.GetNumericValue(group.name[0]);
@@ -52,6 +44,14 @@ public class Board : MonoBehaviour {
                 //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
             }
         }
+    }
+
+    private void CheckBoard() {
+        if (!CheckRows()) return;
+        if (!CheckColumns()) return;
+        if (!CheckBoxes()) return;
+        
+        Debug.LogWarning("Sudoku correct!");
     }
 
     private bool CheckRows() {
