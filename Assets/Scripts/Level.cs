@@ -51,7 +51,6 @@ public class Level {
 
 public class LevelMatchHistory {
     private bool won = false;
-    private bool finished = true;
     private int moves = 0;
     private DateTime startDate = new DateTime();
     private int elapsedSeconds = 0;
@@ -60,7 +59,6 @@ public class LevelMatchHistory {
         Debug.Log($"Deserialize level match history from json: {node.ToString()}");
 
         won = node["won"].AsBool;
-        finished = node["finished"].AsBool;
         moves = node["moves"].AsInt;
         startDate = DateTime.ParseExact(node["date"], "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
         elapsedSeconds = node["elapsedSeconds"];
