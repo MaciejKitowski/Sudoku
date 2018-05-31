@@ -24,11 +24,16 @@ public class BoardTile : MonoBehaviour {
 
             if (value != 0) {
                 valueField.text = $"{value}";
-
                 if (ValueChanged != null) ValueChanged();
             }
             else valueField.text = "";
         }
+    }
+
+    public void Clear() {
+        Value = 0;
+        constant = false;
+        GetComponent<Image>().color = Color.white;
     }
 
     public void SetConstantValue(int value) {
