@@ -3000,7 +3000,7 @@ GameObject:
   - component: {fileID: 527861530}
   - component: {fileID: 527861529}
   m_Layer: 5
-  m_Name: Level ID
+  m_Name: Current Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8022,6 +8022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 929104146}
+  difficultDropdown: {fileID: 98776828}
+  currentLevelText: {fileID: 527861529}
 --- !u!1001 &1862176283
 Prefab:
   m_ObjectHideFlags: 0

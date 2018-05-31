@@ -6,6 +6,16 @@ using UnityEngine.UI;
 public class SelectLevel : MonoBehaviour {
     [SerializeField] private MainMenu mainMenu = null;
     [SerializeField] private Dropdown difficultDropdown = null;
+    [SerializeField] private Text currentLevelText = null;
+
+    private LevelManager levelManager = null;
+    private int currentLevelID = 0;
+
+    private void Start() {
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+
+        UpdateDisplayedLevel();
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) ButtonBackToMenu();
@@ -36,6 +46,17 @@ public class SelectLevel : MonoBehaviour {
     }
 
     public void DropdownChangeDifficult() {
-        Debug.Log($"Changed difficult to {difficultDropdown.options[difficultDropdown.value].text}");
+        Debug.Log($"Changed difficult dropdown");
+
+        if (difficultDropdown.value == 0) levelManager.CurrentDifficult = LevelManager.Difficult.EASY;
+        else if (difficultDropdown.value == 1) levelManager.CurrentDifficult = LevelManager.Difficult.MEDIUM;
+        else levelManager.CurrentDifficult = LevelManager.Difficult.HARD;
+
+        currentLevelID = 0;
+        UpdateDisplayedLevel();
+    }
+
+    private void UpdateDisplayedLevel() {
+        currentLevelText.text = $"{currentLevelID + 1}/{levelManager.DifficultLevels.Count}";
     }
 }

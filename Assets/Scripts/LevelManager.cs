@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour {
 
     private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
     private string path = null;
+    private Difficult difficult = Difficult.EASY;
+
+    public Difficult CurrentDifficult { get { return difficult; } set { difficult = value; } }
+    public List<Level> DifficultLevels { get { return levels[difficult]; } }
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
