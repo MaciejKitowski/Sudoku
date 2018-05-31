@@ -7,8 +7,6 @@ using SimpleJSON;
 public class LevelManager : MonoBehaviour {
     public enum Difficult { EASY, MEDIUM, HARD }
 
-    public Level SelectedLevel { get; private set; } = null;
-
     private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
     private string path = null;
 

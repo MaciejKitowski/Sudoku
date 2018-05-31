@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectLevel : MonoBehaviour {
     [SerializeField] private MainMenu mainMenu = null;
+    [SerializeField] private Dropdown difficultDropdown = null;
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) ButtonBackToMenu();
@@ -31,5 +33,9 @@ public class SelectLevel : MonoBehaviour {
         Debug.Log("Pressed Back To Main Menu button");
         mainMenu.Display();
         this.Hide();
+    }
+
+    public void DropdownChangeDifficult() {
+        Debug.Log($"Changed difficult to {difficultDropdown.options[difficultDropdown.value].text}");
     }
 }

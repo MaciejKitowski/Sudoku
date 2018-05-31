@@ -6,14 +6,9 @@ public class Board : MonoBehaviour {
     [SerializeField] private KeyboardNumeric keyboard = null;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
-    private LevelManager levelManager = null;
 
 	void Start () {
         LoadTilesToArray();
-
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
-        if (levelManager.SelectedLevel != null) SetLevel(levelManager.SelectedLevel);
-        else Debug.LogWarning("Selected level is null");
     }
 
     //DEBUG
