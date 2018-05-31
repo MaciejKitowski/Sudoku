@@ -7,6 +7,7 @@ public class SelectLevel : MonoBehaviour {
     [SerializeField] private MainMenu mainMenu = null;
     [SerializeField] private Dropdown difficultDropdown = null;
     [SerializeField] private Text currentLevelText = null;
+    [SerializeField] private Board board = null;
 
     private LevelManager levelManager = null;
     private int currentLevelID = 0;
@@ -58,5 +59,6 @@ public class SelectLevel : MonoBehaviour {
 
     private void UpdateDisplayedLevel() {
         currentLevelText.text = $"{currentLevelID + 1}/{levelManager.DifficultLevels.Count}";
+        board.SetLevel(levelManager.DifficultLevels[currentLevelID]);
     }
 }

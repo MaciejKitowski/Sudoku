@@ -2350,10 +2350,6 @@ Prefab:
       propertyPath: m_Name
       value: 0x0
       objectReference: {fileID: 0}
-    - target: {fileID: 1908663551562756, guid: a214d12a421dd724a82a3fe6c781cb25, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a214d12a421dd724a82a3fe6c781cb25, type: 2}
   m_IsPrefabParent: 0
@@ -5264,6 +5260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdaae0370119b04da453b804b39b602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  constantBoard: 1
   keyboard: {fileID: 0}
 --- !u!1 &1140521374
 GameObject:
@@ -8024,6 +8021,7 @@ MonoBehaviour:
   mainMenu: {fileID: 929104146}
   difficultDropdown: {fileID: 98776828}
   currentLevelText: {fileID: 527861529}
+  board: {fileID: 1136159467}
 --- !u!1001 &1862176283
 Prefab:
   m_ObjectHideFlags: 0

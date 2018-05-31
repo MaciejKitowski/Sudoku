@@ -25,8 +25,7 @@ public class BoardTile : MonoBehaviour {
             if (value != 0) {
                 valueField.text = $"{value}";
 
-                if (ValueChanged == null) Debug.LogWarning("ValueChanged event is empty", gameObject);
-                else ValueChanged();
+                if (ValueChanged != null) ValueChanged();
             }
             else valueField.text = "";
         }
@@ -37,7 +36,7 @@ public class BoardTile : MonoBehaviour {
         else {
             Value = value;
             constant = true;
-            GetComponent<SpriteRenderer>().color = constantBackground;
+            GetComponent<Image>().color = constantBackground;
         }
     }
 

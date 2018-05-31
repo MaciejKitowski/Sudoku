@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
+    [SerializeField] private bool constantBoard = false; //Constant board in select level submenu
     [SerializeField] private KeyboardNumeric keyboard = null;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
@@ -40,8 +41,11 @@ public class Board : MonoBehaviour {
                 int y = (groupY * 3) + tileY;
 
                 tiles[x, y] = tile.GetComponent<BoardTile>();
-                tiles[x, y].TilePressed += keyboard.Display;
-                tiles[x, y].ValueChanged += CheckBoard;
+                if(!constantBoard) {
+                    tiles[x, y].TilePressed += keyboard.Display;
+                    tiles[x, y].ValueChanged += CheckBoard;
+                }
+                else tile.GetComponent<BoxCollider2D>().enabled = false;
                 //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
             }
         }
