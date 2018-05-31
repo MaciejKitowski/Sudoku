@@ -5,12 +5,11 @@ using System.IO;
 using SimpleJSON;
 
 public class LevelManager : MonoBehaviour {
-    private List<Level> easy = new List<Level>();
-    private List<Level> medium = new List<Level>();
-    private List<Level> hard = new List<Level>();
+    public enum Difficult { EASY, MEDIUM, HARD }
 
     public Level SelectedLevel { get; private set; } = null;
 
+    private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
     private string path = null;
 
     private void Awake() {
@@ -29,11 +28,13 @@ public class LevelManager : MonoBehaviour {
         if(Directory.Exists(path)) {
             Debug.Log("Start deserializing levels");
 
-            DeserializeDifficult("Easy", easy);
-            //DeserializeDifficult("Medium", medium);
-            //DeserializeDifficult("Hard", hard);
+            levels[Difficult.EASY] = DeserializeDifficult("Easy");
+            levels[Difficult.MEDIUM] = DeserializeDifficult("Medium");
+            levels[Difficult.HARD] = DeserializeDifficult("Hard");
 
-            Debug.Log($"Deserialized levels finished, found levels: Easy:{easy.Count}, Medium:{medium.Count}, Hard:{hard.Count}");
+            string debugMessage = "Deserialization finished, found levels:";
+            foreach (var diff in levels.Keys) debugMessage += $"\n\t{diff}: {levels[diff].Count}";
+            Debug.Log(debugMessage);
         }
         else {
             Debug.Log("Levels directory not exists");
@@ -42,16 +43,22 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    private void DeserializeDifficult(string name, List<Level> list) {
-        string levelPath = Path.Combine(path, name);
-        var files = Directory.EnumerateFiles(levelPath, "*.json");
-        Debug.Log($"Deserialize {name} difficult from: {levelPath}");
+    private List<Level> DeserializeDifficult(string directory) {
+        var list = new List<Level>();
+        var dirpath = Path.Combine(path, directory);
+        var files = Directory.EnumerateFiles(dirpath, "*.json");
+        Debug.Log($"Deserialize levels from {dirpath}");
 
-        foreach (string file in files) {
-            Debug.Log($"Load level from file: {file}");
+        foreach(string filepath in files) {
+            Debug.Log($"Load level from: {filepath}");
 
-            list.Add(new Level(JSON.Parse(File.ReadAllText(file))));
+            var rawJson = File.ReadAllText(filepath);
+            var node = JSON.Parse(rawJson);
+
+            list.Add(new Level(node));
         }
+
+        return list;
     }
 
     private void CopyLevelsFromResources() {
