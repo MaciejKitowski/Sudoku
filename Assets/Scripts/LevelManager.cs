@@ -22,6 +22,7 @@ public class LevelManager {
     }
 
     public Difficult SelectedDifficult { get; set; } = Difficult.EASY;
+    public Level SelectedLevel { get; private set; } = null;
     public List<Level> DifficultLevels { get { return levels[SelectedDifficult]; } }
 
     private LevelManager() {
@@ -34,8 +35,9 @@ public class LevelManager {
         Directory.Delete(path, true);
     }
 
-    public void StartLevel(int ID) {
-        Debug.Log($"Start {SelectedDifficult} level: {ID}");
+    public void StartLevel(int index) {
+        Debug.Log($"Start {SelectedDifficult} level: {index}");
+        SelectedLevel = DifficultLevels[index];
         LoadGameScene();
     }
 

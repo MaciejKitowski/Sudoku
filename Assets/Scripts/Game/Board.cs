@@ -7,9 +7,12 @@ public class Board : MonoBehaviour {
     [SerializeField] private KeyboardNumeric keyboard = null;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
+    private LevelManager levelManager = null;
 
 	void Start () {
+        levelManager = LevelManager.Instance;
         LoadTilesToArray();
+        SetLevel(levelManager.SelectedLevel);
     }
 
     //DEBUG
