@@ -9,10 +9,9 @@ public class LevelManager : MonoBehaviour {
 
     private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
     private string path = null;
-    private Difficult difficult = Difficult.EASY;
 
-    public Difficult CurrentDifficult { get { return difficult; } set { difficult = value; } }
-    public List<Level> DifficultLevels { get { return levels[difficult]; } }
+    public Difficult CurrentDifficult { get; set; } = Difficult.EASY;
+    public List<Level> DifficultLevels { get { return levels[CurrentDifficult]; } }
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
@@ -24,6 +23,10 @@ public class LevelManager : MonoBehaviour {
     private void OnDestroy() {
         Debug.LogWarning("Delete Levels directory from persistentDataPath");
         Directory.Delete(path, true);
+    }
+
+    public void StartLevel(int ID) {
+        Debug.Log($"Start {CurrentDifficult} level: {ID}");
     }
 
     private void DeserializeLevels() {

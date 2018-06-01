@@ -56,6 +56,7 @@ public class SelectLevel : MonoBehaviour {
 
     public void ButtonNewGame() {
         Debug.Log("Pressed New Game button");
+        levelManager.StartLevel(CurrentLevel);
     }
 
     public void ButtonMatchHistory() {
@@ -75,7 +76,6 @@ public class SelectLevel : MonoBehaviour {
         else if (difficultDropdown.value == 1) levelManager.CurrentDifficult = LevelManager.Difficult.MEDIUM;
         else levelManager.CurrentDifficult = LevelManager.Difficult.HARD;
 
-        
         CurrentLevel = 0;
         levelCount = levelManager.DifficultLevels.Count;
         UpdateDisplayedLevel();
