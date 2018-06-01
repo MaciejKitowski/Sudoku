@@ -6,18 +6,25 @@ using System.IO;
 using SimpleJSON;
 using System.Threading.Tasks;
 
-public class LevelManager : MonoBehaviour {
-    public enum Difficult { EASY, MEDIUM, HARD }
+public class LevelManager {
+    private static LevelManager instance = null;
 
+    private readonly string path = null;
+
+    public enum Difficult { EASY, MEDIUM, HARD }
     private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
-    private string path = null;
+    
+    public static LevelManager Instance {
+        get {
+            if (instance == null) instance = new LevelManager();
+            return instance;
+        }
+    }
 
     public Difficult SelectedDifficult { get; set; } = Difficult.EASY;
     public List<Level> DifficultLevels { get { return levels[SelectedDifficult]; } }
 
-    private void Awake() {
-        DontDestroyOnLoad(gameObject);
-
+    private LevelManager() {
         path = Path.Combine(Application.persistentDataPath, "Levels");
         DeserializeLevels();
     }

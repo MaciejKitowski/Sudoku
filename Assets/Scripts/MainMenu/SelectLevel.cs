@@ -23,7 +23,7 @@ public class SelectLevel : MonoBehaviour {
     }
 
     private void Start() {
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        levelManager = LevelManager.Instance;
 
         DropdownChangeDifficult();
     }
