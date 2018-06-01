@@ -12,7 +12,8 @@ public class Board : MonoBehaviour {
 	void Start () {
         levelManager = LevelManager.Instance;
         LoadTilesToArray();
-        SetLevel(levelManager.SelectedLevel);
+
+        if (!constantBoard) SetLevel(levelManager.SelectedLevel);
     }
 
     //DEBUG

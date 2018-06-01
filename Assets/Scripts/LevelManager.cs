@@ -27,12 +27,11 @@ public class LevelManager {
 
     private LevelManager() {
         path = Path.Combine(Application.persistentDataPath, "Levels");
-        DeserializeLevels();
-    }
 
-    private void OnDestroy() {
         Debug.LogWarning("Delete Levels directory from persistentDataPath");
         Directory.Delete(path, true);
+
+        DeserializeLevels();
     }
 
     public void StartLevel(int index) {
