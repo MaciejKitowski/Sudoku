@@ -12,8 +12,8 @@ public class LevelManager : MonoBehaviour {
     private Dictionary<Difficult, List<Level>> levels = new Dictionary<Difficult, List<Level>>();
     private string path = null;
 
-    public Difficult CurrentDifficult { get; set; } = Difficult.EASY;
-    public List<Level> DifficultLevels { get { return levels[CurrentDifficult]; } }
+    public Difficult SelectedDifficult { get; set; } = Difficult.EASY;
+    public List<Level> DifficultLevels { get { return levels[SelectedDifficult]; } }
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void StartLevel(int ID) {
-        Debug.Log($"Start {CurrentDifficult} level: {ID}");
+        Debug.Log($"Start {SelectedDifficult} level: {ID}");
         LoadGameScene();
     }
 

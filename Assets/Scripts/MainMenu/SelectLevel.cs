@@ -72,9 +72,9 @@ public class SelectLevel : MonoBehaviour {
     public void DropdownChangeDifficult() {
         Debug.Log($"Changed difficult dropdown");
 
-        if (difficultDropdown.value == 0) levelManager.CurrentDifficult = LevelManager.Difficult.EASY;
-        else if (difficultDropdown.value == 1) levelManager.CurrentDifficult = LevelManager.Difficult.MEDIUM;
-        else levelManager.CurrentDifficult = LevelManager.Difficult.HARD;
+        if (difficultDropdown.value == 0) levelManager.SelectedDifficult = LevelManager.Difficult.EASY;
+        else if (difficultDropdown.value == 1) levelManager.SelectedDifficult = LevelManager.Difficult.MEDIUM;
+        else levelManager.SelectedDifficult = LevelManager.Difficult.HARD;
 
         CurrentLevel = 0;
         levelCount = levelManager.DifficultLevels.Count;
