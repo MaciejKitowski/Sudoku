@@ -8,8 +8,9 @@ using System.Globalization;
 public class Level {
     private int[,] board = new int[9, 9];
     private bool[,] display = new bool[9, 9];
+    private long hashcode = 0;
     private List<LevelMatchHistory> history = new List<LevelMatchHistory>();
-
+    
     public int[,] Board { get { return board; } }
     public bool[,] Display { get { return display; } }
 
@@ -17,6 +18,7 @@ public class Level {
         Debug.Log($"Deserialize level from json: {node.ToString()}");
         DeserializeBoard(node);
         DeserializeDisplay(node);
+        hashcode = node["hashcode"].AsLong;
         DeserializeHistory(node);
 
         Debug.Log("Deserialization finished");
