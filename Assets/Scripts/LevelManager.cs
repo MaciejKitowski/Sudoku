@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using SimpleJSON;
+using System.Threading.Tasks;
 
 public class LevelManager : MonoBehaviour {
     public enum Difficult { EASY, MEDIUM, HARD }
@@ -27,6 +29,14 @@ public class LevelManager : MonoBehaviour {
 
     public void StartLevel(int ID) {
         Debug.Log($"Start {CurrentDifficult} level: {ID}");
+        LoadGameScene();
+    }
+
+    private async void LoadGameScene() {
+        Debug.Log("Load game scene");
+
+        var asyncLoad = SceneManager.LoadSceneAsync("Game");
+        while (!asyncLoad.isDone) await Task.Delay(15);
     }
 
     private void DeserializeLevels() {
