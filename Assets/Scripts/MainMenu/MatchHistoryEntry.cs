@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MatchHistoryEntry : MonoBehaviour {
+    [SerializeField] private Color winBackgroundColor = Color.green;
+    [SerializeField] private Image background = null;
     [SerializeField] private Text date = null;
     [SerializeField] private Text moves = null;
     [SerializeField] private Text time = null;
@@ -12,5 +14,7 @@ public class MatchHistoryEntry : MonoBehaviour {
         date.text = match.StartDate.ToString("yyyy-MM-dd hh:mm");
         moves.text = match.Moves.ToString();
         time.text = match.ElapsedSeconds.ToString();
+
+        if (match.Won) background.color = winBackgroundColor;
     }
 }
