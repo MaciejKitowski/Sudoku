@@ -15,20 +15,18 @@ public class MatchHistory : MonoBehaviour {
         Debug.Log("Display Match History submenu");
         gameObject.SetActive(true);
 
-        RectTransform rect = container.GetComponent<RectTransform>();
+        RectTransform containerRect = container.GetComponent<RectTransform>();
         float prefabHeight = prefab.GetComponent<RectTransform>().rect.height;
         float currentPosY = 0;
 
         foreach(var his in level.History) {
-            rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + prefabHeight);
+            containerRect.sizeDelta = new Vector2(containerRect.sizeDelta.x, containerRect.sizeDelta.y + prefabHeight);
 
             GameObject obj = Instantiate(prefab, container.transform);
             var rct = obj.GetComponent<RectTransform>();
-            Debug.Log(rct.anchoredPosition);
             rct.anchoredPosition = new Vector3(rct.position.x, currentPosY);
             var item = obj.GetComponent<MatchHistoryItem>();
             item.SetMatch(his);
-
 
             currentPosY -= prefabHeight;
         }
