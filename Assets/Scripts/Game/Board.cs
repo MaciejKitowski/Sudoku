@@ -6,6 +6,9 @@ public class Board : MonoBehaviour {
     [SerializeField] private bool constantBoard = false; //Constant board in select level submenu
     [SerializeField] private KeyboardNumeric keyboard = null;
 
+    public delegate void BoardLoadDelegate();
+    public event BoardLoadDelegate BoardFinishedLoading;
+
     private BoardTile[,] tiles = new BoardTile[9, 9];
     private LevelManager levelManager = null;
 
@@ -13,7 +16,8 @@ public class Board : MonoBehaviour {
         levelManager = LevelManager.Instance;
         LoadTilesToArray();
 
-        if (!constantBoard) SetLevel(levelManager.SelectedLevel);
+        //TODO move loading level to game controller
+        //if (!constantBoard) SetLevel(levelManager.SelectedLevel);
     }
 
     //DEBUG
@@ -58,6 +62,8 @@ public class Board : MonoBehaviour {
                 //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
             }
         }
+
+        if (BoardFinishedLoading != null) BoardFinishedLoading();
     }
 
     private void CheckBoard() {

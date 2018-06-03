@@ -25,8 +25,7 @@ public class SelectLevel : MonoBehaviour {
 
     private void Start() {
         levelManager = LevelManager.Instance;
-
-        DropdownChangeDifficult();
+        board.BoardFinishedLoading += BoardFinishedLoading;
     }
 
     private void Update() {
@@ -82,6 +81,11 @@ public class SelectLevel : MonoBehaviour {
         CurrentLevel = 0;
         levelCount = levelManager.DifficultLevels.Count;
         UpdateDisplayedLevel();
+    }
+
+    private void BoardFinishedLoading() {
+        Debug.Log("Board finished loading, set first level");
+        DropdownChangeDifficult();
     }
 
     private void UpdateDisplayedLevel() {
