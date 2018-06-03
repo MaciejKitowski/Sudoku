@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using SimpleJSON;
 using System.Globalization;
+using System.Linq;
 
 public class Level {
     private int[,] board = new int[9, 9];
@@ -47,6 +48,8 @@ public class Level {
         for (int i = 0; i < matches.Count; ++i) {
             history.Add(new LevelMatchHistory(matches[i]));
         }
+
+        history = history.OrderByDescending(it => it.StartDate).ToList();
 
         Debug.Log($"Deserialized {history.Count} matches");
     }
