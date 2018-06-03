@@ -10,10 +10,8 @@ public class Board : MonoBehaviour {
     public event BoardLoadDelegate BoardFinishedLoading;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
-    private LevelManager levelManager = null;
 
 	void Start () {
-        levelManager = LevelManager.Instance;
         LoadTilesToArray();
 
         //TODO move loading level to game controller

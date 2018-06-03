@@ -50,8 +50,6 @@ public class LevelManager {
     }
 
     private void DeserializeLevels() {
-        Debug.Log("AAAA");
-
         if(Directory.Exists(path)) {
             Debug.Log("Start deserializing levels");
 
