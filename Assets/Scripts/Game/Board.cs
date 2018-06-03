@@ -25,7 +25,6 @@ public class Board : MonoBehaviour {
 	}
 
     public void Clear() {
-        Debug.Log("Clear board");
         foreach (var ti in tiles) ti.Clear();
     }
 

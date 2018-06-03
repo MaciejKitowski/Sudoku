@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224326396636059508}
   - component: {fileID: 114732697924195662}
   m_Layer: 5
-  m_Name: Match History item
+  m_Name: Match History entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

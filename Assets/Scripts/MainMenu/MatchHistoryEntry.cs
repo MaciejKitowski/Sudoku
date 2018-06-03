@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatchHistoryItem : MonoBehaviour {
+public class MatchHistoryEntry : MonoBehaviour {
     [SerializeField] private Text date = null;
     [SerializeField] private Text moves = null;
     [SerializeField] private Text time = null;

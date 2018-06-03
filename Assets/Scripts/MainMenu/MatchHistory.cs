@@ -25,7 +25,7 @@ public class MatchHistory : MonoBehaviour {
             GameObject obj = Instantiate(prefab, container.transform);
             var rct = obj.GetComponent<RectTransform>();
             rct.anchoredPosition = new Vector3(rct.position.x, currentPosY);
-            var item = obj.GetComponent<MatchHistoryItem>();
+            var item = obj.GetComponent<MatchHistoryEntry>();
             item.SetMatch(his);
 
             currentPosY -= prefabHeight;
