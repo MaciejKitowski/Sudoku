@@ -13,6 +13,8 @@ public class SelectLevel : MonoBehaviour {
     private LevelManager levelManager = null;
     private int currentLevelID = 0;
     private int levelCount = 0;
+    private float minSwipeDistance = 0;
+    Vector2 swipeStartPosition = Vector2.zero;
 
     private int CurrentLevel {
         get { return currentLevelID; }
@@ -26,20 +28,20 @@ public class SelectLevel : MonoBehaviour {
     private void Start() {
         levelManager = LevelManager.Instance;
         board.BoardFinishedLoading += BoardFinishedLoading;
+
+        minSwipeDistance = Screen.width / 20f;
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) ButtonBackToMenu();
+        if (Input.touchCount > 0) HandleSwipeInput();
+
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             --CurrentLevel;
             UpdateDisplayedLevel();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             ++CurrentLevel;
-            UpdateDisplayedLevel();
-        }
-        if(Input.GetKeyDown(KeyCode.G)) {
-            CurrentLevel = 2;
             UpdateDisplayedLevel();
         }
     }
@@ -86,6 +88,22 @@ public class SelectLevel : MonoBehaviour {
     private void BoardFinishedLoading() {
         Debug.Log("Board finished loading, set first level");
         DropdownChangeDifficult();
+    }
+
+    private void HandleSwipeInput() {
+        var touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Began) swipeStartPosition = touch.position;
+        else if (touch.phase == TouchPhase.Ended) {
+            var difference = swipeStartPosition - touch.position;
+
+            if (Mathf.Abs(difference.x) > minSwipeDistance) {
+                if (difference.normalized.x > 0.5f) ++CurrentLevel;
+                else if (difference.normalized.y < 0.5f) --CurrentLevel;
+
+                UpdateDisplayedLevel();
+            }
+        }
     }
 
     private void UpdateDisplayedLevel() {
