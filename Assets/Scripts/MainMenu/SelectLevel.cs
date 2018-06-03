@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SelectLevel : MonoBehaviour {
     [SerializeField] private MainMenu mainMenu = null;
+    [SerializeField] private MatchHistory matchHistory = null;
     [SerializeField] private Dropdown difficultDropdown = null;
     [SerializeField] private Text currentLevelText = null;
     [SerializeField] private Board board = null;
@@ -61,6 +62,8 @@ public class SelectLevel : MonoBehaviour {
 
     public void ButtonMatchHistory() {
         Debug.Log("Pressed Match History button");
+        matchHistory.Display(levelManager.DifficultLevels[CurrentLevel]);
+        this.Hide();
     }
 
     public void ButtonBackToMenu() {
