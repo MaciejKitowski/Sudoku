@@ -13,6 +13,7 @@ public class Level {
     
     public int[,] Board { get { return board; } }
     public bool[,] Display { get { return display; } }
+    public List<LevelMatchHistory> History { get { return history; } }
 
     public Level(JSONNode node) {
         Debug.Log($"Deserialize level from json: {node.ToString()}");

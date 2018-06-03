@@ -29,9 +29,16 @@ public class LevelManager {
         path = Path.Combine(Application.persistentDataPath, "Levels");
 
         Debug.LogWarning("Delete Levels directory from persistentDataPath");
+        Debug.Log(path);
+        Debug.Log(Directory.Exists(path));
         Directory.Delete(path, true);
 
+        
+        Debug.Log(Directory.Exists(path));
+
         DeserializeLevels();
+
+        Debug.Log(Directory.Exists(path));
     }
 
     public void StartLevel(int index) {
@@ -48,6 +55,8 @@ public class LevelManager {
     }
 
     private void DeserializeLevels() {
+        Debug.Log("AAAA");
+
         if(Directory.Exists(path)) {
             Debug.Log("Start deserializing levels");
 
