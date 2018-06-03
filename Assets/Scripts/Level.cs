@@ -52,17 +52,17 @@ public class Level {
 }
 
 public class LevelMatchHistory {
-    private bool won = false;
-    private int moves = 0;
-    private DateTime startDate = new DateTime();
-    private int elapsedSeconds = 0;
+    public bool Won { get; private set; } = false;
+    public int Moves { get; private set; } = 0;
+    public DateTime StartDate { get; private set; } = new DateTime();
+    public int ElapsedSeconds { get; private set; } = 0;
 
     public LevelMatchHistory(JSONNode node) {
         Debug.Log($"Deserialize level match history from json: {node.ToString()}");
 
-        won = node["won"].AsBool;
-        moves = node["moves"].AsInt;
-        startDate = DateTime.ParseExact(node["date"], "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-        elapsedSeconds = node["elapsedSeconds"];
+        Won = node["won"].AsBool;
+        Moves = node["moves"].AsInt;
+        StartDate = DateTime.ParseExact(node["date"], "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+        ElapsedSeconds = node["elapsedSeconds"];
     }
 }
