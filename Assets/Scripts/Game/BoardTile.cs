@@ -24,7 +24,7 @@ public class BoardTile : MonoBehaviour {
 
             if (value != 0) {
                 valueField.text = $"{value}";
-                if (ValueChanged != null) ValueChanged();
+                if (ValueChanged != null && !constant) ValueChanged();
             }
             else valueField.text = "";
         }
@@ -39,8 +39,8 @@ public class BoardTile : MonoBehaviour {
     public void SetConstantValue(int value) {
         if(value == 0) Debug.LogError("Constant value cannot be 0", gameObject);
         else {
-            Value = value;
             constant = true;
+            Value = value;
             GetComponent<Image>().color = constantBackground;
         }
     }
