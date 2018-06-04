@@ -10,6 +10,7 @@ public class Game : MonoBehaviour {
 	void Awake() {
         levelManager = LevelManager.Instance;
         board.BoardFinishedLoading += BoardFinishedLoading;
+        board.BoardReadyToPlay += BoardReadyToPlay;
 	}
 
     private void BoardFinishedLoading() {
@@ -20,5 +21,9 @@ public class Game : MonoBehaviour {
             Debug.Log("Set level on board");
             board.SetLevel(levelManager.SelectedLevel);
         }
+    }
+
+    private void BoardReadyToPlay() {
+        Debug.Log("Board is ready to play");
     }
 }
