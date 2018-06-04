@@ -14,7 +14,7 @@ public class Game : MonoBehaviour {
 	}
 
     private void BoardFinishedLoading() {
-        Debug.Log("Board finished loading, set level on arena");
+        Debug.Log("Board finished loading, set level");
 
         if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
         else {
