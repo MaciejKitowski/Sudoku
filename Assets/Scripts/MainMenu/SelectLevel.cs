@@ -25,7 +25,7 @@ public class SelectLevel : MonoBehaviour {
         }
     }
 
-    private void Start() {
+    private void Awake() {
         levelManager = LevelManager.Instance;
         board.BoardFinishedLoading += BoardFinishedLoading;
 
