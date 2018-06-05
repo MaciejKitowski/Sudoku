@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameFinish : MonoBehaviour {
@@ -27,9 +29,25 @@ public class GameFinish : MonoBehaviour {
 
     public void ButtonPlayAgain() {
         Debug.Log("Pressed Play Again button");
+        LoadGameScene();
     }
 
     public void ButtonBackToMenu() {
         Debug.Log("Pressed Back To Menu button");
+        LoadMainMenuScene();
+    }
+
+    private async void LoadGameScene() {
+        Debug.Log("Load game scene");
+
+        var asyncLoad = SceneManager.LoadSceneAsync("Game");
+        while (!asyncLoad.isDone) await Task.Delay(15);
+    }
+
+    private async void LoadMainMenuScene() {
+        Debug.Log("Load Main Menu scene");
+
+        var asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
+        while (!asyncLoad.isDone) await Task.Delay(15);
     }
 }

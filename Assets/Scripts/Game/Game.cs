@@ -53,16 +53,7 @@ public class Game : MonoBehaviour {
 
     private void BoardFinishedLoading() {
         Debug.Log("Board finished loading, set level");
-
-        //DEBUG
-        Level lev = levelManager.DifficultLevels[3];
-        board.SetLevel(lev);
-
-        //if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
-        //else {
-        //    Debug.Log("Set level on board");
-        //    board.SetLevel(levelManager.SelectedLevel);
-        //}
+        SetLevelOnBoard();
     }
 
     private void BoardReadyToPlay() {
@@ -72,6 +63,18 @@ public class Game : MonoBehaviour {
         Moves = 0;
 
         StartTimer();
+    }
+
+    private void SetLevelOnBoard() {
+        //if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
+        //else {
+        //    Debug.Log("Set level on board");
+        //    board.SetLevel(levelManager.SelectedLevel);
+        //}
+
+        //DEBUG
+        Level lev = levelManager.DifficultLevels[3];
+        board.SetLevel(lev);
     }
 
     private void SudokuCorrect() {
