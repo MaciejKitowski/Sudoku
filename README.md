@@ -16,6 +16,7 @@ The objective is to fill a 9×9 grid with digits so that each column, each row, 
 * Add textures
 * Add sounds and music
 * More keyboards to select
+* Highlight wrong rows/cols/boxes
 * Settings submenu
 * Multiple languages
 * REST server with global highscores for each level, Facebook/Google player authentication and new levels updates
