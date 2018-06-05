@@ -77,6 +77,7 @@ public class Game : MonoBehaviour {
         Debug.Log("Sudoku correct!");
         Playing = false;
 
+        levelManager.AddMatchHistory(true, Moves, ElapsedSeconds);
         gameFinish.Display(true, elapsedSeconds, moves);
     }
 
@@ -85,6 +86,7 @@ public class Game : MonoBehaviour {
             Debug.Log("Cancel game!");
             Playing = false;
 
+            levelManager.AddMatchHistory(false, Moves, ElapsedSeconds);
             gameFinish.Display(false, elapsedSeconds, moves);
         }
     }

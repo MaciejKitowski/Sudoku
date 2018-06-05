@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using SimpleJSON;
 using System.Threading.Tasks;
+using System;
 
 public class LevelManager {
     private static LevelManager instance = null;
@@ -40,6 +41,12 @@ public class LevelManager {
         Debug.Log($"Start {SelectedDifficult} level: {index}");
         SelectedLevel = DifficultLevels[index];
         LoadGameScene();
+    }
+
+    public void AddMatchHistory(bool won, int moves, int elapsedSeconds) {
+        DateTime date = DateTime.Now;
+        SelectedLevel.AddNewMatch(won, moves, date, elapsedSeconds);
+        SelectedLevel.SaveToFile();
     }
 
     private async void LoadGameScene() {
@@ -80,7 +87,7 @@ public class LevelManager {
             var rawJson = File.ReadAllText(filepath);
             var node = JSON.Parse(rawJson);
 
-            list.Add(new Level(node));
+            list.Add(new Level(filepath, node));
         }
 
         return list;

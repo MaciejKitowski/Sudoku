@@ -11,7 +11,7 @@ public class MatchHistoryEntry : MonoBehaviour {
     [SerializeField] private Text time = null;
 
     public void SetMatch(LevelMatchHistory match) {
-        date.text = match.StartDate.ToString("yyyy-MM-dd hh:mm");
+        date.text = match.StartDate.ToString("yyyy-MM-dd HH:mm");
         moves.text = match.Moves.ToString();
         time.text = match.ElapsedSeconds.ToString();
 
