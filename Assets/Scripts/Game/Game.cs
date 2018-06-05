@@ -12,7 +12,18 @@ public class Game : MonoBehaviour {
 
     private LevelManager levelManager = null;
     private int elapsedSeconds = 0;
-    
+    private int moves = 0;
+
+    public bool Playing { get; private set; } = false;
+
+    public int Moves {
+        get { return moves; }
+        set {
+            moves = value;
+            moveCounterText.text = $"{value:D3}";
+        }
+    }
+
     private int ElapsedSeconds {
         get { return elapsedSeconds; }
         set {
@@ -27,7 +38,12 @@ public class Game : MonoBehaviour {
         board.BoardReadyToPlay += BoardReadyToPlay;
 
         ElapsedSeconds = 0;
+        Moves = 0;
 	}
+
+    private void OnDestroy() {
+        Playing = false;
+    }
 
     private void BoardFinishedLoading() {
         Debug.Log("Board finished loading, set level");
@@ -45,12 +61,15 @@ public class Game : MonoBehaviour {
 
     private void BoardReadyToPlay() {
         Debug.Log("Board is ready to play");
+        Playing = true;
+        ElapsedSeconds = 0;
+        Moves = 0;
 
         StartTimer();
     }
 
     private async void StartTimer() {
-        while(true) {
+        while(Playing) {
             await Task.Delay(1000);
             ElapsedSeconds++;
         }

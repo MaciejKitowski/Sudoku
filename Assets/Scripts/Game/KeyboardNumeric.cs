@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 public class KeyboardNumeric : MonoBehaviour {
+    [SerializeField] private Game game = null;
+
     private BoardTile activeTile = null;
     private bool readyToPress = false;
 
@@ -25,8 +27,8 @@ public class KeyboardNumeric : MonoBehaviour {
     }
 
     public void Display(BoardTile pressedTile) {
-        if (!gameObject.activeInHierarchy) {
-            Debug.Log("Display keyboard with tile", pressedTile);
+        if (!gameObject.activeInHierarchy && game.Playing) {
+            Debug.Log("Display keyboard", pressedTile);
             gameObject.SetActive(true);
             activeTile = pressedTile;
 
@@ -44,6 +46,7 @@ public class KeyboardNumeric : MonoBehaviour {
         if (readyToPress) {
             Debug.Log($"Pressed {value} button");
             activeTile.Value = value;
+            game.Moves++;
             Hide();
         }
     }
@@ -52,6 +55,7 @@ public class KeyboardNumeric : MonoBehaviour {
         if (readyToPress) {
             Debug.Log("Pressed CLEAR button");
             activeTile.Value = 0;
+            game.Moves++;
             Hide();
         }
     }
