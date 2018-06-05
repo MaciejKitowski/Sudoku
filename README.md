@@ -21,7 +21,7 @@ The objective is to fill a 9×9 grid with digits so that each column, each row, 
 * Summary for each level (best result, total moves, etc.) in select level submenu
 * Settings submenu
 * Multiple languages
-* REST server with global highscores for each level, Facebook/Google player authentication and new levels updates
+* REST server with global highscores for each level, Facebook/Google authentication and new levels updates
 
 ## Screenshots
 <div align="center">
