@@ -5,6 +5,7 @@ using System;
 using SimpleJSON;
 using System.Globalization;
 using System.Linq;
+using System.IO;
 
 public class Level {
     private int[,] board = new int[9, 9];
@@ -40,6 +41,8 @@ public class Level {
 
     public void SaveToFile() {
         Debug.Log($"Save level {hashcode} to {filepath}: {node.ToString()}");
+
+        File.WriteAllText(filepath, node.ToString());
     }
 
     public override int GetHashCode() { return hashcode; }
