@@ -49,7 +49,7 @@ public class Game : MonoBehaviour {
         Debug.Log("Board finished loading, set level");
 
         //DEBUG
-        Level lev = levelManager.DifficultLevels[0];
+        Level lev = levelManager.DifficultLevels[3];
         board.SetLevel(lev);
 
         //if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
