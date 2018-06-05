@@ -8,8 +8,10 @@ public class Board : MonoBehaviour {
 
     public delegate void BoardFinishLoadDelegate();
     public delegate void BoardReadyToPlayDelegate();
+    public delegate void SudokuCorrectDelegate();
     public event BoardFinishLoadDelegate BoardFinishedLoading;
     public event BoardReadyToPlayDelegate BoardReadyToPlay;
+    public event SudokuCorrectDelegate SudokuCorrect;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
 
@@ -69,7 +71,7 @@ public class Board : MonoBehaviour {
         if (!CheckColumns()) return;
         if (!CheckBoxes()) return;
         
-        Debug.LogWarning("Sudoku correct!");
+        if (SudokuCorrect != null) SudokuCorrect();
     }
 
     private bool CheckRows() {
