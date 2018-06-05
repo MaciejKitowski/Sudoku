@@ -34,7 +34,7 @@ public class Level {
 
     public void AddNewMatch(bool won, int moves, DateTime date, int elapsedSeconds) {
         LevelMatchHistory history = new LevelMatchHistory(won, moves, date, elapsedSeconds);
-        History.Add(history);
+        History.Insert(0, history);
 
         node["MatchHistory"].Add(history.Serialize());
     }
