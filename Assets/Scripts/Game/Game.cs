@@ -66,15 +66,11 @@ public class Game : MonoBehaviour {
     }
 
     private void SetLevelOnBoard() {
-        //if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
-        //else {
-        //    Debug.Log("Set level on board");
-        //    board.SetLevel(levelManager.SelectedLevel);
-        //}
-
-        //DEBUG
-        Level lev = levelManager.DifficultLevels[3];
-        board.SetLevel(lev);
+        if (levelManager.SelectedLevel == null) Debug.LogError("Selected level is null");
+        else {
+            Debug.Log("Set level on board");
+            board.SetLevel(levelManager.SelectedLevel);
+        }
     }
 
     private void SudokuCorrect() {
