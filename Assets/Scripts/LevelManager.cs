@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +25,7 @@ public class LevelManager {
     public Difficult SelectedDifficult { get; set; } = Difficult.EASY;
     public Level SelectedLevel { get; private set; } = null;
     public List<Level> DifficultLevels { get { return levels[SelectedDifficult]; } }
+    public int Index {get; private set; } = 0;
 
     private LevelManager() {
         path = Path.Combine(Application.persistentDataPath, "Levels");
@@ -40,12 +41,19 @@ public class LevelManager {
     public void StartLevel(int index) {
         Debug.Log($"Start {SelectedDifficult} level: {index}");
         SelectedLevel = DifficultLevels[index];
+        Index = index;
+        LoadGameScene();
+    }
+
+    public void StartLevel(Level level)
+    {
+        SelectedLevel = level;
         LoadGameScene();
     }
 
     public void AddMatchHistory(bool won, int moves, int elapsedSeconds) {
         DateTime date = DateTime.Now;
-        SelectedLevel.AddNewMatch(won, moves, date, elapsedSeconds);
+        SelectedLevel.AddNewMatch(won, moves, date, elapsedSeconds, SelectedDifficult, Index);
         SelectedLevel.SaveToFile();
     }
 
@@ -96,7 +104,7 @@ public class LevelManager {
     private void CopyLevelsFromResources() {
         Debug.Log("Copy levels from resources");
 
-        Directory.CreateDirectory(path);
+        // Directory.CreateDirectory();
         CopyDifficultFromResources("Easy");
         CopyDifficultFromResources("Medium");
         CopyDifficultFromResources("Hard");
@@ -116,5 +124,11 @@ public class LevelManager {
 
             File.WriteAllText(filepath, file.text);
         }
+    }
+
+    public void ResetVariables() {
+        SelectedDifficult = Difficult.EASY;
+        SelectedLevel = DifficultLevels[0];
+        Index = 0;
     }
 }

@@ -10,12 +10,14 @@ public class Game : MonoBehaviour {
     [SerializeField] private Text timerText = null;
     [SerializeField] private Text moveCounterText = null;
     [SerializeField] private GameFinish gameFinish = null;
+    [SerializeField] private Saver saver = null;
+    [SerializeField] private GameObject pauseButton = null;
 
     private LevelManager levelManager = null;
     private int elapsedSeconds = 0;
     private int moves = 0;
 
-    public bool Playing { get; private set; } = false;
+    public bool Playing = false;
 
     public int Moves {
         get { return moves; }
@@ -45,6 +47,7 @@ public class Game : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) CancelLevel();
+
     }
 
     private void OnDestroy() {
@@ -79,9 +82,11 @@ public class Game : MonoBehaviour {
 
         levelManager.AddMatchHistory(true, Moves, ElapsedSeconds);
         gameFinish.Display(true, elapsedSeconds, moves);
+        saver.CleanSaveFile();
+        saver.AddMatch(levelManager.SelectedLevel);
     }
 
-    private void CancelLevel() {
+    public void CancelLevel() {
         if(!gameFinish.isActiveAndEnabled) {
             Debug.Log("Cancel game!");
             Playing = false;
@@ -89,6 +94,10 @@ public class Game : MonoBehaviour {
             levelManager.AddMatchHistory(false, Moves, ElapsedSeconds);
             gameFinish.Display(false, elapsedSeconds, moves);
         }
+        pauseButton.SetActive(false);
+        saver.CleanSaveFile();
+        saver.AddMatch(levelManager.SelectedLevel);
+        levelManager.ResetVariables();
     }
 
     private async void StartTimer() {

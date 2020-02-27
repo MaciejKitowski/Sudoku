@@ -5,10 +5,6 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour {
     [SerializeField] private SelectLevel selectLevel = null;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) ButtonExitGame();
-    }
-
     public void Display() {
         Debug.Log("Display Main Menu");
         gameObject.SetActive(true);

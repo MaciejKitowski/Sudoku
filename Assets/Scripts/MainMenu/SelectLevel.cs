@@ -9,6 +9,7 @@ public class SelectLevel : MonoBehaviour {
     [SerializeField] private Dropdown difficultDropdown = null;
     [SerializeField] private Text currentLevelText = null;
     [SerializeField] private Board board = null;
+    [SerializeField] private Loader loader = null;
 
     private LevelManager levelManager = null;
     private int currentLevelID = 0;
@@ -57,7 +58,7 @@ public class SelectLevel : MonoBehaviour {
     }
 
     public void ButtonNewGame() {
-        Debug.Log("Pressed New Game button");
+        Debug.Log("Pressed New Game button {CurrentLevel} level load");
         levelManager.StartLevel(CurrentLevel);
     }
 

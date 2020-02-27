@@ -1,10 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour {
     [SerializeField] private bool constantBoard = false; //Constant board in select level submenu
-    [SerializeField] private KeyboardNumeric keyboard = null;
+    [SerializeField] private NewKeyBoard keyboard = null;
+    [SerializeField] private Saver saver = null;
+    [SerializeField] private MistakeChecker mistakeChecker = null;
+
 
     public delegate void BoardFinishLoadDelegate();
     public delegate void BoardReadyToPlayDelegate();
@@ -14,9 +17,14 @@ public class Board : MonoBehaviour {
     public event SudokuCorrectDelegate SudokuCorrect;
 
     private BoardTile[,] tiles = new BoardTile[9, 9];
+    private Level savedLevel = null;
 
 	void Start () {
         LoadTilesToArray();
+        if(!constantBoard) {
+            saver.SaveLevel();            
+            mistakeChecker.SetTileValues(tiles);
+        }
     }
 
     //DEBUG
@@ -30,16 +38,20 @@ public class Board : MonoBehaviour {
     }
 
     public void SetLevel(Level level) {
+        bool savedBefore = level.ToLoad;
         for(int y = 0; y < 9; ++y) {
             for(int x = 0; x < 9; ++x) {
                 if (level.Display[x, y]) {
                     tiles[x, y].SetConstantValue(level.Board[x, y]);
-                }
+                } 
+                else if(savedBefore) 
+                    tiles[x, y].SetValue(level.Board[x, y]);
             }
         }
 
         if (BoardReadyToPlay != null) BoardReadyToPlay();
-    }
+
+    } 
 
     private void LoadTilesToArray() {
         foreach (Transform group in transform) {
@@ -55,8 +67,8 @@ public class Board : MonoBehaviour {
 
                 tiles[x, y] = tile.GetComponent<BoardTile>();
                 if(!constantBoard) {
-                    tiles[x, y].TilePressed += keyboard.Display;
                     tiles[x, y].ValueChanged += CheckBoard;
+                    tiles[x, y].TilePressed += keyboard.TilePressed;
                 }
                 else tile.GetComponent<BoxCollider2D>().enabled = false;
                 //Debug.Log($"parent={group.name} tile={tile.name}   |   x={x} y={y}", tiles[x,y]);
@@ -67,11 +79,17 @@ public class Board : MonoBehaviour {
     }
 
     private void CheckBoard() {
+        SaveLevel();
         if (!CheckRows()) return;
         if (!CheckColumns()) return;
         if (!CheckBoxes()) return;
         
         if (SudokuCorrect != null) SudokuCorrect();
+    }
+
+    private void SaveLevel()
+    {
+        saver.SaveLevelData(tiles);
     }
 
     private bool CheckRows() {
